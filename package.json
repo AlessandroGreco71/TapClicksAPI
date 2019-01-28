@@ -1,0 +1,11 @@
+{
+  "name": "Tap-openapi-spec",
+  "version": "0.0.1",
+  "dependencies": {
+    "redoc-cli": "0.7.0"
+  },
+  "private": true,
+  "scripts": {
+    "start": "npx redoc-cli serve ./spec/swagger.yaml --watch"
+  }
+}
