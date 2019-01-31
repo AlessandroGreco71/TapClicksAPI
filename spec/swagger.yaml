@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: TAPCLICKS
   description: |-
-
+  
     This is the first version of the API Specification for TapClicks.
 
     # AUTHENTICATION
@@ -15,52 +15,52 @@ info:
     url: 'https://jobs.mindtheproduct.com/wp-content/uploads/company_logos/2018/04/tapclicks_logo_png-250x93.png'
     # url: 'https://www.tapclicks.com/static-templates/img/tapclicks-logo-color.png'
 
-
+  
 servers:
   - url: 'https://api.tapclicks.com/v2'
-
+  
 tags:
   - name: POSSIBLE RESPONSES
     description: |
         **Possible Response Codes:**
         ```
-        > 200 - OK: The request was successful and the response body contains
+        > 200 - OK: The request was successful and the response body contains 
                     the representation requested
-        > 302 - FOUND: A common redirect response; you can GET the representation
+        > 302 - FOUND: A common redirect response; you can GET the representation 
                     at the URL in the Location response header
-        > 304 - NOT MODIFIED: Your client's cached version of the representation
+        > 304 - NOT MODIFIED: Your client's cached version of the representation 
                     is still up to date
-        > 400 - BAD REQUEST: The request could not be understood by the server
-                    due to malformed syntax
-        > 401 - UNAUTHORIZED: The supplied credentials, if any, are not sufficient
+        > 400 - BAD REQUEST: The request could not be understood by the server 
+                    due to malformed syntax                    
+        > 401 - UNAUTHORIZED: The supplied credentials, if any, are not sufficient 
                     to access the resource
-        > 404 - NOT FOUND: The server has not found anything matching the
+        > 404 - NOT FOUND: The server has not found anything matching the 
                     Request-URI
-        > 429 - TOO MANY REQUESTS: Your application is sending too many
+        > 429 - TOO MANY REQUESTS: Your application is sending too many 
                     simultaneous requests
-        > 500 - SERVER ERROR: We couldn't return the representation due to
+        > 500 - SERVER ERROR: We couldn't return the representation due to 
                     an internal server error
-        > 503 - SERVICE UNAVAILABLE: We are temporarily unable to return
+        > 503 - SERVICE UNAVAILABLE: We are temporarily unable to return 
                     the representation. Please wait for a bit and try again.
-
+        
         ```
-
+        
   - name: PAGINATION
-    description: |
+    description: | 
       Pagination can be implemented with the query parameter `page`, which accepts two parameters.<br>
       The first parameter represents which page is returned (starting from index = 0).<br>
       The second parameter represents how many records each page contains and, therefore, the number of records that will be returned.
-
+      
       **Examples&#58;**
-
+      
       |URL                                                | Records returned|
       |---------------------------------------------------|-----------------|
       |https://api.tapclicks.com/v2/34/data/cgn?page=0,5  | returns the 5 records of page index 0 (records 1 -> 5) |
       |https://api.tapclicks.com/v2/34/data/cgn?page=1,5  | returns the 5 records of page index 1 (records 6 -> 10) |
       |https://api.tapclicks.com/v2/34/data/cgn?page=1,8  | returns the 8 records of page index 1 (records 9 -> 16) |
       |https://api.tapclicks.com/v2/34/data/cgn?page=2,6  | returns the 6 records of page index 2 (records 13 -> 18) |
-
-
+      
+        
   - name: TAPCLICKS API
     description: Welcome to Tap API.
   - name: BUSINESS UNITS
@@ -91,25 +91,25 @@ tags:
     description: Users in the instance.
   - name: EXAMPLES
     description: |
-      | Replace the the {id} in the URL with a service_id from the list of all <a href="#tag/Services-(Data-Sources)/paths/~1services~1{service_id}/get">Services (Data Sources)</a> |
-      | --------------------------------------------------------------------------------------|
-      | **1. Get API version**                                                                |
-      | https://api.tapclicks.com/v2/                                                         |
+      | Replace the the {id} in the URL with a service_id from the list of all <a href="#tag/Services-(Data-Sources)/paths/~1services~1{service_id}/get">Services (Data Sources)</a> |  
+      | --------------------------------------------------------------------------------------|   
+      | **1. Get API version**                                                                | 
+      | https://api.tapclicks.com/v2/                                                         | 
       | **2. Get metadata for the service**                                                   |
-      | https://api.tapclicks.com/v2/services/{id}/data/cgn?metadata=1                        |
-      | **3. Get services level data**                                                        |
-      | https://api.tapclicks.com/v2/services/{id}                                            |
-      | **4. Get campaign level data**                                                        |
-      | https://api.tapclicks.com/v2/services/{id}/data/cgn                                   |
-      | **5. Get campaign level data paginated**                                              |
-      | https://api.tapclicks.com/v2/services/{id}/data/cgn?page=0,10                         |
-      | **6. Get campaign level data paginated and grouped yearly**                           |
-      | https://api.tapclicks.com/v2/services/{id}/data/cgn?page=0,10&timegrouping=yearly     |
-      | **7. Get certain metrics only**                                                       |
-      | https://api.tapclicks.com/v2/services/{id}/data/cgn?page=0,10&groupby=customer_id&fields=customer_id,CTR,AverageCPC,ClickCount&sort=customer_id                                 |
-
-
-
+      | https://api.tapclicks.com/v2/services/{id}/data/cgn?metadata=1                        | 
+      | **3. Get services level data**                                                        | 
+      | https://api.tapclicks.com/v2/services/{id}                                            | 
+      | **4. Get campaign level data**                                                        | 
+      | https://api.tapclicks.com/v2/services/{id}/data/cgn                                   | 
+      | **5. Get campaign level data paginated**                                              | 
+      | https://api.tapclicks.com/v2/services/{id}/data/cgn?page=0,10                         | 
+      | **6. Get campaign level data paginated and grouped yearly**                           | 
+      | https://api.tapclicks.com/v2/services/{id}/data/cgn?page=0,10&timegrouping=yearly     | 
+      | **7. Get certain metrics only**                                                       | 
+      | https://api.tapclicks.com/v2/services/{id}/data/cgn?page=0,10&groupby=customer_id&fields=customer_id,CTR,AverageCPC,ClickCount&sort=customer_id                                 | 
+      
+      
+  
 paths:
   /:
     get:
@@ -135,7 +135,7 @@ paths:
                     type: array
                     description: Warnings
                     items:
-                      type: integer
+                      type: string
                   status:
                     type: integer
                     description: Status
@@ -162,7 +162,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_404'
-
+                
 # --------------------- Business Units --------------------------
 
   /clusters{/cluster_id}:
@@ -171,8 +171,8 @@ paths:
         - BUSINESS UNITS
       summary: Business Units
       description: Clusters are Business Units. This returns a specific Business Unit (*cluster_id*).
-
-
+      
+      
         **Note&#58;** if the path parameter *cluster_id* is omitted, this will return all the Business Units in the instance (in the response, the "data" field will be an array of cluster objects).
       parameters:
         - in: path
@@ -195,9 +195,9 @@ paths:
           schema:
             type: string
           description: The example will return the first five records. Please refer to <a href="#tag/PAGINATION">Pagination</a> for more examples.
-
-
-            This will limit the number of rows in the fetch result.
+        
+        
+            This will limit the number of rows in the fetch result. 
           example: https://api.tapclicks.com/v2/clusters?page=0,5
         - in: query
           name: fields
@@ -205,8 +205,8 @@ paths:
           schema:
             type: string
           description: This will filter the result data with the specific fields.
-
-
+      
+      
             **Note&#58;** when using this query parameter, other than the ones specified, more fields may be returned as well.
           example: https://api.tapclicks.com/v2/clusters?fields=id,name
         - in: query
@@ -215,8 +215,8 @@ paths:
           schema:
             type: string
           description: Ascending by default; prefix **-** for descending.
-
-
+      
+      
             This will alphabetically sort the results by name.
           example: https://api.tapclicks.com/v2/clusters?sort=name
         - in: query
@@ -234,11 +234,11 @@ paths:
             type: string
           description: |
             This will filter the data that contains only specific values.
-
-
+      
+      
             To remove items use **!** before the value.
-
-
+            
+            
             Example&#58; `"https://api.tapclicks.com/v2/clusters?id=!12"`<br>
             This will return all clusters, except for the one with id = 12
           example: https://api.tapclicks.com/v2/clusters?id=10,11,12
@@ -252,12 +252,12 @@ paths:
                 $ref: '#/components/schemas/response_200_clusters'
               example:
                 data:
-                  id: 1
+                  id: "1"
                   name: "West Coast Unit"
                   has_light_logo: false
                   has_dark_logo: false
                   external_cluster_id: ""
-                  enable_inventory_group: false
+                  is_cluster_group: false
                   status: "active"
                   status_display: "Active"
                 error: false
@@ -276,22 +276,22 @@ paths:
               schema:
                 $ref: '#/components/schemas/error_401'
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_404'
-
-# --------------------- Channels (Categories) --------------------------
-
+                
+# --------------------- Channels (Categories) --------------------------                
+      
   /categories{/category_id}:
     get:
       tags:
         - CHANNELS
       summary: Channels
       description: Categories are Channels. This returns a specific category (*category_id*).
-
-
+      
+      
         **Note&#58;** if the path parameter *category_id* is omitted, this will return all the channels in the instance (in the response, the "data" field will be an array of category objects).
       parameters:
         - in: path
@@ -308,16 +308,16 @@ paths:
             enum: [0,1]
           description: The API will provide more or all the info for the available fields.
           example: https://api.tapclicks.com/v2/categories?metadata=1
-        # IMPORTANT: this will have to be fixed/checked before showing this option
+        # IMPORTANT: this will have to be fixed/checked before showing this option 
         # - in: query
         #   name: page
         #   required: false
         #   schema:
         #     type: string
         #   description: The example will return the first five records. Please refer to <a href="#tag/PAGINATION">Pagination</a> for more examples.
-
-
-        #     This will limit the number of rows in the fetch result.
+        
+        
+        #     This will limit the number of rows in the fetch result. 
         #   example: https://api.tapclicks.com/v2/categories?page=0,5
         - in: query
           name: fields
@@ -325,8 +325,8 @@ paths:
           schema:
             type: string
           description: This will filter the result data with the specific fields.
-
-
+      
+      
             **Note&#58;** when using this query parameter, other than the ones specified, more fields may be returned as well.
           example: https://api.tapclicks.com/v2/categories?fields=id,name
         - in: query
@@ -335,8 +335,8 @@ paths:
           schema:
             type: string
           description: Ascending by default; prefix **-** for descending.
-
-
+      
+      
             This will alphabetically sort the results by name.
           example: https://api.tapclicks.com/v2/categories?sort=name
         - in: query
@@ -354,11 +354,11 @@ paths:
             type: string
           description: |
             This will filter the data that contains only specific values.
-
-
+      
+      
             To remove items use **!** before the value.
-
-
+            
+              
             Example&#58; `"https://api.tapclicks.com/v2/categories?id=!12"`<br>
             This will return all channels, except for the one with id = 12
           example: https://api.tapclicks.com/v2/categories?name=Social%20Services,Display%20Services
@@ -375,7 +375,7 @@ paths:
                   id: "49"
                   name: "Custom Channel"
                   service_ids:
-                    39:
+                    39: 
                       icon: "facebookads"
                       name: "Facebook Ads"
                       color: "#234589"
@@ -393,7 +393,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_400'
+                $ref: '#/components/schemas/error_400'                    
         '401':
           description: Invalid access token
           content:
@@ -401,13 +401,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/error_401'
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_404'
 
-# --------------------- Clients --------------------------
+# --------------------- Clients --------------------------                  
 
   /clients{/client_id}:
     get:
@@ -415,8 +415,8 @@ paths:
         - CLIENTS
       summary: Clients
       description: This returns a specific Client (*client_id*).
-
-
+      
+      
         **Note&#58;** if the path parameter *client_id* is omitted, this will return all the Clients in the instance (in the response, the "data" field will be an array of client objects).
       parameters:
         - in: path
@@ -425,8 +425,8 @@ paths:
             type: integer
           required: true
           description: Numeric Id of the Client to get. Please refer to <a href="#tag/Clients">Clients</a> to obtain the correct Id
-
-
+          
+          
             If omitted, it will return all Clients
         - in: query
           name: metadata
@@ -442,9 +442,9 @@ paths:
           schema:
             type: string
           description: The example will return the first five records. Please refer to <a href="#tag/PAGINATION">Pagination</a> for more examples.
-
-
-            This will limit the number of rows in the fetch result.
+        
+        
+            This will limit the number of rows in the fetch result. 
           example: https://api.tapclicks.com/v2/clients?page=0,5
         - in: query
           name: fields
@@ -452,8 +452,8 @@ paths:
           schema:
             type: string
           description: This will filter the result data with the specific fields.
-
-
+      
+      
             **Note&#58;** when using this query parameter, other than the ones specified, more fields may be returned as well.
           example: https://api.tapclicks.com/v2/clients?fields=id,company_name,last_name
         - in: query
@@ -462,8 +462,8 @@ paths:
           schema:
             type: string
           description: Ascending by default; prefix **-** for descending.
-
-
+      
+      
             This will alphabetically sort the results by company name.
           example: https://api.tapclicks.com/v2/clients?sort=company_name
         - in: query
@@ -479,12 +479,12 @@ paths:
           required: false
           schema:
             type: string
-          description: |
+          description: | 
             This will filter the data that contains only specific values.
-
-
+      
+      
             To remove items use **!** before the value.
-
+            
 
             Example&#58; `"https://api.tapclicks.com/v2/clients?id=!12"`<br>
             This will return all Clients, except for the one with id = 12
@@ -499,7 +499,7 @@ paths:
                 $ref: '#/components/schemas/response_200_clients'
               example:
                 data:
-                  id: 1,
+                  id: "1"
                   company_name: "JP Marketing"
                   first_name: "Jack"
                   last_name: "Smith"
@@ -542,13 +542,13 @@ paths:
                   iotool_status_display: "presale"
                 error: false
                 warnings: []
-                status: 200
+                status: 200    
         '400':
           description: Error on client's side
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_400'
+                $ref: '#/components/schemas/error_400'                
         '401':
           description: Invalid access token
           content:
@@ -556,12 +556,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/error_401'
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_404'
-
+                
     post:
       tags:
         - CLIENTS
@@ -587,7 +587,7 @@ paths:
 
                   {
                   "company_name": "JP Marketing",
-                  "default_reporting_profile_id": 1,
+                  "default_reporting_profile_id": "1",
                   "reporting_status": "pending_mapping",
                   "iotool_status": "presale"
                   }
@@ -601,7 +601,7 @@ paths:
                 $ref: '#/components/schemas/response_200_new_edit_client_user'
               example:
                 data:
-                  id: 35
+                  id: "35"
                 error: false
                 warnings: []
                 status: 200
@@ -616,14 +616,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_401'
+                $ref: '#/components/schemas/error_401' 
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_404'
-
+                
   /clients:
     post:
       tags:
@@ -643,7 +643,7 @@ paths:
 
                   {
                   "company_name": "JP Marketing",
-                  "default_reporting_profile_id": 1,
+                  "default_reporting_profile_id": "1",
                   "reporting_status": "pending_mapping",
                   "iotool_status": "presale"
                   }
@@ -657,7 +657,7 @@ paths:
                 $ref: '#/components/schemas/response_200_new_edit_client_user'
               example:
                 data:
-                  id: 35
+                  id: "35"
                 error: false
                 warnings: []
                 status: 200
@@ -672,23 +672,23 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_401'
+                $ref: '#/components/schemas/error_401'   
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_404'
-# --------------------- Client's Categories --------------------------
-
+# --------------------- Client's Categories --------------------------  
+  
   /clientcategories:
     get:
       tags:
         - CLIENT'S CATEGORIES
       summary: All Client's categories
       description: This returns a list of all possible categories that can be assigned to a client.
-
-
+      
+      
         For example&#58; Services, Automotive, Retailer, Restaurant...
       parameters:
         - in: query
@@ -705,8 +705,8 @@ paths:
           schema:
             type: string
           description: Ascending by default; prefix **-** for descending.
-
-
+      
+      
             This will alphabetically sort the results by name.
           example: https://api.tapclicks.com/v2/clientcategories?sort=name
         - in: query
@@ -722,18 +722,18 @@ paths:
           required: false
           schema:
             type: string
-          description: |
+          description: | 
             This will filter the data that contains only specific values.
-
-
+      
+      
             To remove items use **!** before the value.
-
-
+            
+          
             Example&#58; `"https://api.tapclicks.com/v2/clientcategories?id=!12"`<br>
             This will return all Client categories, except for the one with id = 12
-          example: https://api.tapclicks.com/v2/clientcategories?name=Automotive
-
-      responses:
+          example: https://api.tapclicks.com/v2/clientcategories?name=Automotive       
+       
+      responses: 
         '200':
           description: Ok - Successful Operation
           content:
@@ -742,78 +742,78 @@ paths:
                 $ref: '#/components/schemas/response_200_clientcategories'
               example:
                 data:
-                  - id: 1
+                  - id: "1"
                     name: "General"
-                  - id: 2
+                  - id: "2"
                     name: "Wholesale"
-                  - id: 3
+                  - id: "3"
                     name: "Retailer"
-                  - id: 4
+                  - id: "4"
                     name: "Restaurants"
-                  - id: 5
+                  - id: "5"
                     name: "Auto Dealerships"
-                  - id: 6
+                  - id: "6"
                     name: "Arts & Entertainment"
-                  - id: 7
+                  - id: "7"
                     name: "Automotive"
-                  - id: 8
-                    name: "Beauty & Fitness"
-                  - id: 9
+                  - id: "8"
+                    name: "Beauty & Fitness" 
+                  - id: "9"
                     name: "Community, Clubs & Organizations"
-                  - id: 10
+                  - id: "10"
                     name: "Computers & Electronics"
-                  - id: 11
+                  - id: "11"
                     name: "Education"
-                  - id: 12
+                  - id: "12"
                     name: "Food & Dining"
-                  - id: 13
+                  - id: "13"
                     name: "Health Care"
-                  - id: 14
+                  - id: "14"
                     name: "Home & Garden"
-                  - id: 15
+                  - id: "15"
                     name: "Real Estate & Rentals"
-                  - id: 16
+                  - id: "16"
                     name: "Recreation & Sporting Goods"
-                  - id: 17
+                  - id: "17"
                     name: "Travel & Accomodations"
-                  - id: 18
+                  - id: "18"
                     name: "Services"
-                  - id: 20
+                  - id: "20"
                     name: "Home Applicances"
-                  - id: 21
+                  - id: "21"
                     name: "Agricultural"
                 error: false
                 warnings: []
-                status: 200
+                status: 200   
         '400':
           description: Error on client's side
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_400'
+                $ref: '#/components/schemas/error_400'                
         '401':
           description: Invalid access token
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_401'
+                $ref: '#/components/schemas/error_401'   
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_404'
 
-# --------------------- Client Groups --------------------------
-
+# --------------------- Client Groups --------------------------        
+                  
   /clientgroups{/clientgroup_id}:
     get:
       tags:
         - CLIENT GROUPS
       summary: Client Groups
       description: This returns a specific Group of Clients (*clientgroup_id*).
-
-
+      
+      
         **Note&#58;** if the path parameter *clientgroup_id* is omitted, this will return all the Groups of Clients in the instance (in the response, the "data" field will be an array of clientGroup objects).
       parameters:
         - in: path
@@ -836,9 +836,9 @@ paths:
           schema:
             type: string
           description: The example will return the first five records. Please refer to <a href="#tag/PAGINATION">Pagination</a> for more examples.
-
-
-            This will limit the number of rows in the fetch result.
+        
+        
+            This will limit the number of rows in the fetch result. 
           example: https://api.tapclicks.com/v2/clientgroups?page=0,5
         - in: query
           name: fields
@@ -846,8 +846,8 @@ paths:
           schema:
             type: string
           description: This will filter the result data with the specific fields.
-
-
+      
+      
             **Note&#58;** when using this query parameter, other than the ones specified, more fields may be returned as well.
           example: https://api.tapclicks.com/v2/clientgroups?fields=id,name
         - in: query
@@ -856,8 +856,8 @@ paths:
           schema:
             type: string
           description: Ascending by default; prefix **-** for descending.
-
-
+      
+      
             This will alphabetically sort the results by name.
           example: https://api.tapclicks.com/v2/clientgroups?sort=name
         - in: query
@@ -875,11 +875,11 @@ paths:
             type: string
           description: |
             This will filter the data that contains only specific values.
-
-
+      
+      
             To remove items use **!** before the value.
-
-
+           
+            
             Example&#58; `"https://api.tapclicks.com/v2/clientgroups?id=!12"`<br>
             This will return all Client Groups, except for the one with id = 12
           example: https://api.tapclicks.com/v2/clientgroups?id=10,15,16
@@ -902,7 +902,7 @@ paths:
                   updated_at: 1540404023
                   formatted_created_at: "Oct 24, 2018 6:00 PM"
                   formatted_updated_at: "Oct 24, 2018 6:00 PM"
-                  client_ids: [1]
+                  client_ids: ["1"]
                 error: false
                 warnings: []
                 status: 200
@@ -919,13 +919,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/error_401'
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_404'
-
-# --------------------- Data Profiles --------------------------
+        
+# --------------------- Data Profiles -------------------------- 
 
   /reportingprofiles{/profile_id}:
     get:
@@ -933,8 +933,8 @@ paths:
         - DATA PROFILES
       summary: Data Profiles
       description: This returns a specific Data Profile (*profile_id*).
-
-
+      
+      
         **Note&#58;** if the path parameter *profile_id* is omitted, this will return all the Data Profiles in the instance (in the response, the "data" field will be an array of dataProfile objects).
       parameters:
         - in: path
@@ -942,7 +942,7 @@ paths:
           schema:
             type: integer
           required: true
-          description: Numeric Id of the Data Profile to get. If omitted, it will return all Data Profiles
+          description: Numeric Id of the Data Profile to get. If omitted, it will return all Data Profiles  
         - in: query
           name: metadata
           required: false
@@ -957,9 +957,9 @@ paths:
           schema:
             type: string
           description: The example will return the first five records. Please refer to <a href="#tag/PAGINATION">Pagination</a> for more examples.
-
-
-            This will limit the number of rows in the fetch result.
+        
+        
+            This will limit the number of rows in the fetch result. 
           example: https://api.tapclicks.com/v2/reportingprofiles?page=0,5
         - in: query
           name: fields
@@ -967,8 +967,8 @@ paths:
           schema:
             type: string
           description: This will filter the result data with the specific fields.
-
-
+      
+      
             **Note&#58;** when using this query parameter, other than the ones specified, more fields may be returned as well.
           example: https://api.tapclicks.com/v2/reportingprofiles?fields=id,name
         - in: query
@@ -977,8 +977,8 @@ paths:
           schema:
             type: string
           description: Ascending by default; prefix **-** for descending.
-
-
+      
+      
             This will alphabetically sort the results by name.
           example: https://api.tapclicks.com/v2/reportingprofiles?sort=name
         - in: query
@@ -996,11 +996,11 @@ paths:
             type: string
           description: |
             This will filter the data that contains only specific values.
-
-
+      
+      
             To remove items use **!** before the value.
-
-
+          
+            
             Example&#58; `"https://api.tapclicks.com/v2/reportingprofiles?id=!12"`<br>
             This will return all data profiles, except for the one with id = 12
           example: https://api.tapclicks.com/v2/reportingprofiles?name=Default%20Profile,Internal-Employee
@@ -1013,7 +1013,7 @@ paths:
                 $ref: '#/components/schemas/response_200_dataprofiles'
               example:
                 data:
-                  id: 1
+                  id: "1"
                   name: "Default Profile"
                   created_at: 1378100067
                   updated_at: 1435939300
@@ -1038,14 +1038,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/error_401'
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_404'
-
-# --------------------- Data Types --------------------------
-
+                
+# --------------------- Data Types --------------------------                 
+  
   /columns/datatypes:
     get:
       tags:
@@ -1165,22 +1165,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_401'
+                $ref: '#/components/schemas/error_401'  
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_404'
-
-# --------------------- Date Range --------------------------
+                
+# --------------------- Date Range --------------------------                  
   /daterange:
     get:
       tags:
         - DATE RANGE
       summary: Date range
       description: This returns the current set date range.
-      responses:
+      responses: 
         '200':
           description: Ok - Successful Operation
           content:
@@ -1204,21 +1204,21 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_400'
+                $ref: '#/components/schemas/error_400'            
         '401':
           description: Invalid access token
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_401'
+                $ref: '#/components/schemas/error_401' 
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_404'
-
-# --------------------- Languages --------------------------
+                
+# --------------------- Languages --------------------------                 
   /languages:
     get:
       tags:
@@ -1233,7 +1233,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/response_200_languages'
               example:
-                data:
+                data: 
                   - locale: "en_US"
                     name: "English"
                   - locale: "fr_CA"
@@ -1252,29 +1252,29 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_400'
+                $ref: '#/components/schemas/error_400'                
         '401':
           description: Invalid access token
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_401'
+                $ref: '#/components/schemas/error_401' 
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_404'
-
-# --------------------- Leads --------------------------
+                
+# --------------------- Leads --------------------------    
   /leads{/lead_id}:
     get:
       tags:
         - LEADS
       summary: Leads
-      description: This returns a specific lead (*lead_id*).
-
-
+      description: This returns a specific lead (*lead_id*). 
+        
+        
         **Note&#58;** that if the path parameter *lead_id* is omitted, this will return a list of all the leads in the instance (in the response, the "data" field will be an array of lead objects).
       parameters:
         - in: path
@@ -1282,7 +1282,7 @@ paths:
           schema:
             type: integer
           required: true
-          description: Numeric Id of the lead to get. If omitted, it will return all leads
+          description: Numeric Id of the lead to get. If omitted, it will return all leads 
         - in: query
           name: metadata
           required: false
@@ -1297,9 +1297,9 @@ paths:
           schema:
             type: string
           description: The example will return the first five records. Please refer to <a href="#tag/PAGINATION">Pagination</a> for more examples.
-
-
-            This will limit the number of rows in the fetch result.
+        
+        
+            This will limit the number of rows in the fetch result. 
           example: https://api.tapclicks.com/v2/leads?page=0,5
         - in: query
           name: fields
@@ -1307,8 +1307,8 @@ paths:
           schema:
             type: string
           description: This will filter the result data with the specific fields.
-
-
+      
+      
             **Note&#58;** when using this query parameter, other than the ones specified, more fields may be returned as well.
           example: https://api.tapclicks.com/v2/leads?fields=id,client_id,campaign_id
         - in: query
@@ -1317,8 +1317,8 @@ paths:
           schema:
             type: string
           description: Ascending by default; prefix **-** for descending.
-
-
+      
+      
             This will alphabetically sort the results by name.
           example: https://api.tapclicks.com/v2/leads?sort=service_name
         - in: query
@@ -1336,11 +1336,11 @@ paths:
             type: string
           description: |
             This will filter the data that contains only specific values.
-
-
+      
+      
             To remove items use **!** before the value.
-
-
+            
+            
             Example&#58; `"https://api.tapclicks.com/v2/leads?id=!12"`<br>
             This will return all leads, except for the one with id = 12
           example: https://api.tapclicks.com/v2/leads?id=10,11,12
@@ -1371,7 +1371,7 @@ paths:
           schema:
             type: string
           description: Passing **row_grouping_count** along with the list of **fields** will provide grouped result and row count on each group (**groupby**)
-
+            
           example: https://api.tapclicks.com/v2/leads?groupby=campaign_id&fields=row_grouping_count
         - in: query
           name: nested
@@ -1387,11 +1387,11 @@ paths:
           schema:
             type: string
           description: The example will return the leads with a timestamp for the month of December.
-
-
+            
+            
             This filters the result between the given date range (YYYY-MM-DD).
           example: https://api.tapclicks.com/v2/leads?&daterange=2018-12-01|2018-12-31
-
+        
       responses:
         '200':
           description: Ok - Successful Operation
@@ -1402,7 +1402,7 @@ paths:
               example:
                 data:
                   id: null
-                  lead_id: 329312
+                  lead_id: "329312"
                   client_id: 409
                   campaign_id: "51"
                   campaign_name: "Destination Carins Marketing"
@@ -1478,13 +1478,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_400'
+                $ref: '#/components/schemas/error_400'                
         '401':
           description: Invalid access token
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_401'
+                $ref: '#/components/schemas/error_401'  
         '403':
           description: Forbidden
           content:
@@ -1492,21 +1492,21 @@ paths:
               schema:
                 $ref: "#/components/schemas/error_403"
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_404'
-
-# --------------------- Role --------------------------
+                
+# --------------------- Role --------------------------  
   /roles{/role_id}:
     get:
       tags:
         - ROLES
       summary: User roles
       description: This returns a specific role (*role_id*) that can be assigned to a user.
-
-
+      
+      
         **Note&#58;** that if the path parameter *role_id* is omitted, this will return a list of all the roles in the instance (in the response, the "data" field will be an array of role objects).
       parameters:
         - in: path
@@ -1514,7 +1514,7 @@ paths:
           schema:
             type: integer
           required: true
-          description: Numeric Id of the role to get. If omitted, it will return all roles
+          description: Numeric Id of the role to get. If omitted, it will return all roles  
         - in: query
           name: metadata
           required: false
@@ -1529,9 +1529,9 @@ paths:
           schema:
             type: string
           description: The example will return the first five records. Please refer to <a href="#tag/PAGINATION">Pagination</a> for more examples.
-
-
-            This will limit the number of rows in the fetch result.
+        
+        
+            This will limit the number of rows in the fetch result. 
           example: https://api.tapclicks.com/v2/roles?page=0,5
         - in: query
           name: fields
@@ -1539,8 +1539,8 @@ paths:
           schema:
             type: string
           description: This will filter the result data with the specific fields.
-
-
+      
+      
             **Note&#58;** when using this query parameter, other than the ones specified, more fields may be returned as well.
           example: https://api.tapclicks.com/v2/roles?fields=id,name
         - in: query
@@ -1549,8 +1549,8 @@ paths:
           schema:
             type: string
           description: Ascending by default; prefix **-** for descending.
-
-
+      
+      
             This will alphabetically sort the results by name.
           example: https://api.tapclicks.com/v2/roles?sort=name
         - in: query
@@ -1568,15 +1568,15 @@ paths:
             type: string
           description: |
             This will filter the data that contains only specific values.
-
-
+      
+      
             To remove items use **!** before the value.
-
-
+            
+            
             Example&#58; `"https://api.tapclicks.com/v2/roles?id=!12"`<br>
             This will return all roles, except for the one with id = 12
           example: https://api.tapclicks.com/v2/roles?name=Sales,Vendor
-
+        
       responses:
         '200':
           description: Ok - Successful Operation
@@ -1586,14 +1586,13 @@ paths:
                 $ref: '#/components/schemas/response_200_roles'
               example:
                 data:
-                  id: 2
+                  id: "2"
                   name: "Sales"
                   role_type: "io_tool"
                   cluster_id: null
-                  row_grouping_count: 1
-                  can_be_edited: true
-                  can_be_deleted: false
-                  can_be_cloned: false
+                  reporting_template_ids: ["1"]
+                  manage_dashboard: false
+                  can_manage_alerts: false
                 error: false
                 warnings: []
                 status: 200
@@ -1602,32 +1601,32 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_400'
+                $ref: '#/components/schemas/error_400'                
         '401':
           description: Invalid access token
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_401'
+                $ref: '#/components/schemas/error_401' 
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_404'
 
-
-# --------------------- Services (Data Sources) --------------------------
+      
+# --------------------- Services (Data Sources) --------------------------        
 
   /services{/service_id}:
     get:
       tags:
         - SERVICES (DATA SOURCES)
       summary: Services
-      description:
+      description: 
         This returns a specific service (*service_id*) in the instance. This can be helpful to find out if such is connected or not.
-
-
+        
+        
         **Note&#58;** that if the path parameter *service_id* is omitted, this will return a list of all the services available in the instance, whether they're connected or not (in the response, the "data" field will be an array of service objects).
       parameters:
         - in: path
@@ -1635,7 +1634,7 @@ paths:
           schema:
             type: integer
           required: true
-          description: Numeric Id of the service to get. If omitted, it will return all services
+          description: Numeric Id of the service to get. If omitted, it will return all services 
         - in: query
           name: metadata
           required: false
@@ -1650,9 +1649,9 @@ paths:
           schema:
             type: string
           description: The example will return the first five records. Please refer to <a href="#tag/PAGINATION">Pagination</a> for more examples.
-
-
-            This will limit the number of rows in the fetch result.
+        
+        
+            This will limit the number of rows in the fetch result. 
           example: https://api.tapclicks.com/v2/services?page=0,5
         - in: query
           name: fields
@@ -1660,8 +1659,8 @@ paths:
           schema:
             type: string
           description: This will filter the result data with the specific fields.
-
-
+      
+      
             **Note&#58;** when using this query parameter, other than the ones specified, more fields may be returned as well.
           example: https://api.tapclicks.com/v2/services?fields=id,name
         - in: query
@@ -1670,8 +1669,8 @@ paths:
           schema:
             type: string
           description: Ascending by default; prefix **-** for descending.
-
-
+      
+      
             This will alphabetically sort the results by name.
           example: https://api.tapclicks.com/v2/services?sort=name
         - in: query
@@ -1689,11 +1688,11 @@ paths:
             type: string
           description: |
             This will filter the data that contains only specific values.
-
-
+      
+      
             To remove items use **!** before the value.
-
-
+            
+            
             Example&#58; `"https://api.tapclicks.com/v2/services?id=!12"`<br>
             This will return all services, except for the one with id = 12
           example: https://api.tapclicks.com/v2/services?id=10,11,12
@@ -1706,7 +1705,7 @@ paths:
                 $ref: '#/components/schemas/response_200_services'
               example:
                 data:
-                  service_id: 44
+                  service_id: "44"
                   name: "Facebook Insights"
                   original_name: "Facebook Insights"
                   datamodel: "info/shoutletfbcgn"
@@ -1732,38 +1731,38 @@ paths:
                   service_icon: "facebook"
                 error: false
                 warnings: []
-                status: 200
+                status: 200                  
         '400':
           description: Error on client's side
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_400'
+                $ref: '#/components/schemas/error_400'                
         '401':
           description: Invalid access token
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_401'
+                $ref: '#/components/schemas/error_401' 
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_404'
-
+                
   /services{/id}/data{/data_view_id}: #{/field}
     get:
       tags:
         - SERVICES (DATA SOURCES)
       summary: Data for a service
       description: This returns the data for a specific service. This API call should utilize as many query parameters as needed to obtain the specific data available for a certain data view.
-
-
-        Please refer to the <a href="#tag/EXAMPLES">Examples</a> section for more specific use cases.
-
-
-        **Note&#58;** the fields listed in the response example may differ depending on the service (data-source) the user is trying to pull the data from.
+      
+      
+        Please refer to the <a href="#tag/EXAMPLES">Examples</a> section for more specific use cases. 
+      
+        
+        **Note&#58;** the fields listed in the response example may differ depending on the service (data-source) the user is trying to pull the data from.   
       parameters:
         - in: path
           name: /id
@@ -1797,9 +1796,9 @@ paths:
           schema:
             type: string
           description: The example will return the first five records. Please refer to <a href="#tag/PAGINATION">Pagination</a> for more examples.
-
-
-            This will limit the number of rows in the fetch result.
+        
+        
+            This will limit the number of rows in the fetch result. 
           example: https://api.tapclicks.com/v2/services/34/data/cgn?timegrouping=weekly&fields=log_date,ClickCount,ImpressionCount&page=0,5
         - in: query
           name: fields
@@ -1807,8 +1806,8 @@ paths:
           schema:
             type: string
           description: This will filter the result data with the specific fields.
-
-
+      
+      
             **Note&#58;** when using this query parameter, other than the ones specified, more fields may be returned as well.
           example: https://api.tapclicks.com/v2/services/34/data/cgn?timegrouping=weekly&fields=ClickCount,ImpressionCount
         - in: query
@@ -1817,8 +1816,8 @@ paths:
           schema:
             type: string
           description: Ascending by default; prefix **-** for descending.
-
-
+      
+      
             This will alphabetically sort the results by Customer name.
           example: https://api.tapclicks.com/v2/services/34/data/cgn?groupby=cust_id&fields=ClickCount,ImpressionCount&sort=cust_name
         - in: query
@@ -1836,11 +1835,11 @@ paths:
             type: string
           description: |
             This will filter the data that contains only specific values.
-
-
+      
+      
             To remove items use **!** before the value.
-
-
+            
+            
             Example&#58; `"http://api.tapclicks.com/v2/services/34/data/cgn?fields=client_name,ClickCount,ImpressionCount&&customer_id=!921"`<br>
             This will return the selected fields from all Customers, except for the customer id = 921
           example: http://api.tapclicks.com/v2/services/34/data/cgn?fields=client_name,ClickCount,ImpressionCount&&customer_id=12,13
@@ -1886,8 +1885,8 @@ paths:
           schema:
             type: string
           description: The example will return clicks and impressions with a timestamp for the month of December.
-
-
+            
+            
             This filters the result between the given date range (YYYY-MM-DD).
           example: https://api.tapclicks.com/v2/services/34/data/cgn?groupby=customer_id&fields=ClickCount,ImpressionCount&daterange=2018-12-01|2018-12-31
       responses:
@@ -1947,28 +1946,28 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_400'
+                $ref: '#/components/schemas/error_400'              
         '401':
           description: Invalid access token
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_401'
+                $ref: '#/components/schemas/error_401' 
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_404'
-
+       
   /services/info{/id}:
     get:
       tags:
         - SERVICES (DATA SOURCES)
       summary: Information on Services
       description: This returns general information regarding a Service (*id*).
-
-
+        
+        
         **Note&#58;** that if the path parameter *id* is omitted, this will return a list of all the information of all services (in the response, the "data" field will be an array of infoService objects).
       parameters:
         - in: path
@@ -1993,8 +1992,8 @@ paths:
                 $ref: '#/components/schemas/response_200_infoservices'
               example:
                 data:
-                  id: 1
-                  service_id: 110
+                  id: "1"
+                  service_id: "110"
                   connect_steps: null
                   categories: "display, demand side platform (dsp), ad server, yield management tools, programmatic"
                   keywords: "ad serving, advertising technology, ad operations, demand-side platform"
@@ -2017,28 +2016,28 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_400'
+                $ref: '#/components/schemas/error_400'                
         '401':
           description: Invalid access token
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_401'
+                $ref: '#/components/schemas/error_401' 
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_404'
-
+        
   /services/orderitems{/order_item_id}:
     get:
       tags:
         - SERVICES (DATA SOURCES)
       summary: Order items of a Service
       description: This returns an order item (*order_item_id*).
-
-
+          
+          
         **Note&#58;** that if the path parameter *order_item_id* is omitted, this will return a list of all the order items in the instance (in the response, the "data" field will be an array of orderItem objects).
       parameters:
         - in: path
@@ -2046,7 +2045,7 @@ paths:
           schema:
             type: integer
           required: true
-          description: Numeric Id of the order item to get. If omitted, it will return all order items
+          description: Numeric Id of the order item to get. If omitted, it will return all order items 
         - in: query
           name: metadata
           required: false
@@ -2061,9 +2060,9 @@ paths:
           schema:
             type: string
           description: The example will return the first five records. Please refer to <a href="#tag/PAGINATION">Pagination</a> for more examples.
-
-
-            This will limit the number of rows in the fetch result.
+        
+        
+            This will limit the number of rows in the fetch result. 
           example: https://api.tapclicks.com/v2/services/orderitems?page=0,5
         - in: query
           name: fields
@@ -2071,8 +2070,8 @@ paths:
           schema:
             type: string
           description: This will filter the result data with the specific fields.
-
-
+      
+      
             **Note&#58;** when using this query parameter, other than the ones specified, more fields may be returned as well.
           example: https://api.tapclicks.com/v2/services/orderitems?fields=id,customer_id
         - in: query
@@ -2081,8 +2080,8 @@ paths:
           schema:
             type: string
           description: Ascending by default; prefix **-** for descending.
-
-
+      
+      
             This will sort the results by mapping date (descending).
           example: https://api.tapclicks.com/v2/services/orderitems?page=0,5&fields=id,customer_id&sort=-mapping_date
         - in: query
@@ -2100,11 +2099,11 @@ paths:
             type: string
           description: |
             This will filter the data that contains only specific values.
-
-
+      
+      
             To remove items use **!** before the value.
-
-
+            
+            
             Example&#58; `"https://api.tapclicks.com/v2/services/orderitems?customer_id=!12"`<br>
             This will return all order items, except for the one with customer id = 12
           example: https://api.tapclicks.com/v2/services/orderitems?fields=id,customer_id&customer_id=1,2
@@ -2117,13 +2116,13 @@ paths:
                 $ref: '#/components/schemas/response_200_servicesorderitem'
               example:
                 data:
-                  id: 2
-                  service_id: 45
-                  customer_id: 5
-                  item_id: 3
+                  id: "2"
+                  service_id: "45"
+                  customer_id: "5"
+                  item_id: "3"
                   mapping_date: "Sept 25, 2018"
-                  connection_setting_id: 3
-                  first_level_mapping: 3
+                  connection_setting_id: "3"
+                  first_level_mapping: "3"
                   second_level_mapping: ""
                 error: false
                 warnings: []
@@ -2133,29 +2132,29 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_400'
+                $ref: '#/components/schemas/error_400'                
         '401':
           description: Invalid access token
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_401'
+                $ref: '#/components/schemas/error_401'   
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_404'
-
-# --------------------- Users --------------------------
+     
+# --------------------- Users --------------------------  
   /users{/user_id}:
     get:
       tags:
         - USERS
       summary: Users
       description: This returns a specific User (*user_id*).
-
-
+      
+      
         **Note&#58;** if the path parameter *user_id* is omitted, this will return all the Users in the instance (in the response, the "data" field will be an array of user objects).
       parameters:
         - in: path
@@ -2178,9 +2177,9 @@ paths:
           schema:
             type: string
           description: The example will return the first five records. Please refer to <a href="#tag/PAGINATION">Pagination</a> for more examples.
-
-
-            This will limit the number of rows in the fetch result.
+        
+        
+            This will limit the number of rows in the fetch result. 
           example: https://api.tapclicks.com/v2/users?page=0,5
         - in: query
           name: fields
@@ -2188,8 +2187,8 @@ paths:
           schema:
             type: string
           description: This will filter the result data with the specific fields.
-
-
+      
+      
             **Note&#58;** when using this query parameter, other than the ones specified, more fields may be returned as well.
           example: https://api.tapclicks.com/v2/users?fields=id,user_type,last_name,email
         - in: query
@@ -2198,8 +2197,8 @@ paths:
           schema:
             type: string
           description: Ascending by default; prefix **-** for descending.
-
-
+      
+      
             This will alphabetically sort the results by last name.
           example: https://api.tapclicks.com/v2/users?sort=last_name
         - in: query
@@ -2217,14 +2216,14 @@ paths:
             type: string
           description: |
             This will filter the data that contains only specific values.
-
-
+      
+      
             To remove items use **!** before the value.
-
-
+          
+            
             Example&#58; `"https://api.tapclicks.com/v2/users?id=!12"`<br>
             This will return all Users, except for the one with id = 12
-          example: https://api.tapclicks.com/v2/users?id=1,2,3
+          example: https://api.tapclicks.com/v2/users?id=1,2,3          
 
       responses:
         '200':
@@ -2235,7 +2234,7 @@ paths:
                 $ref: '#/components/schemas/response_200_users'
               example:
                 data:
-                  id: 1
+                  id: "1"
                   client_id: null
                   user_type: "superadmin"
                   company_name: null
@@ -2268,9 +2267,9 @@ paths:
                   show_services_overview: "default"
                   show_categories_overview: "default"
                   role_id: null
-                  io_tool_role_id: 6
+                  io_tool_role_id: "6"
                   client_group_id: null
-                  reporting_profile_id: 8
+                  reporting_profile_id: "8"
                   user_type_display: "Super Admin"
                   country_display: ""
                   timezone_display: "default"
@@ -2278,13 +2277,13 @@ paths:
                   formatted_creation_time: "Sept 24, 2018 2:14 PM"
                 error: false
                 warnings: []
-                status: 200
+                status: 200 
         '400':
           description: Error on client's side
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_400'
+                $ref: '#/components/schemas/error_400'                
         '401':
           description: Invalid access token
           content:
@@ -2292,7 +2291,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/error_401'
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
@@ -2327,9 +2326,9 @@ paths:
                   "password": "user1234",
                   "first_name": "John",
                   "last_name": "Doe",
-                  "reporting_profile_id": 1,
-                  "client_group_id": 1,
-                  "role_id": 1,
+                  "reporting_profile_id": "1",
+                  "client_group_id": "1",
+                  "role_id": "1",
                   "status": "active"
                   }
                   ------WebKitFormBoundarySMGbXJtM7VSNs0Nu--
@@ -2342,29 +2341,29 @@ paths:
                 $ref: '#/components/schemas/response_200_new_edit_client_user'
               example:
                 data:
-                  id: 35
+                  id: "35"
                 error: false
                 warnings: []
-                status: 200
+                status: 200  
         '400':
           description: Error on client's side
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_400'
+                $ref: '#/components/schemas/error_400'  
         '401':
           description: Invalid access token
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_401'
+                $ref: '#/components/schemas/error_401'                 
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error_404'
-
+              
   /users:
     post:
       tags:
@@ -2375,7 +2374,7 @@ paths:
         content:
           'multipart/form-data, boundary=----WebKitFormBoundarySMGbXJtM7VSNs0Nu':
             schema:
-              $ref: "#/components/schemas/user"
+              $ref: "#/components/schemas/createUser"
             examples:
               '0':
                 value: |-
@@ -2384,13 +2383,13 @@ paths:
 
                   {
                   "user_type": "agent",
-                  "email": "TestingFromSwaggerInsp@email.com",
+                  "email": "user@email.com",
                   "password": "user1234",
                   "first_name": "John",
                   "last_name": "Doe",
-                  "reporting_profile_id": 1,
-                  "client_group_id": 1,
-                  "role_id": 1,
+                  "reporting_profile_id": "1",
+                  "client_group_id": "1",
+                  "role_id": "1",
                   "status": "active"
                   }
                   ------WebKitFormBoundarySMGbXJtM7VSNs0Nu--
@@ -2403,7 +2402,7 @@ paths:
                 $ref: '#/components/schemas/response_200_new_edit_client_user'
               example:
                 data:
-                  id: 35
+                  id: "35"
                 error: false
                 warnings: []
                 status: 200
@@ -2412,15 +2411,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_400'
+                $ref: '#/components/schemas/error_400' 
         '401':
           description: Invalid access token
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_401'
+                $ref: '#/components/schemas/error_401' 
         '404':
-          description: API Route not found
+          description: API Route not found 
           content:
             application/json:
               schema:
@@ -2431,12 +2430,12 @@ components:
 
 
   schemas:
-# --------------- Business Unit Model -----------------
+# --------------- Business Unit Model -----------------     
     cluster:
       type: object
       properties:
         id:
-          type: integer
+          type: string
           description: Business Unit Id
         name:
           type: string
@@ -2448,13 +2447,13 @@ components:
           type: boolean
           description: Has dark logo
         external_cluster_id:
-          type: integer
+          type: string
           description: External Business Unit Id
         enable_inventory_calendar:
           type: boolean
-          description: Enable inventory calendar
-
-
+          description: Enable inventory calendar 
+          
+          
             **Note&#58;** This field is returned only if the TapOrders module is active
         is_cluster_group:
           type: boolean
@@ -2467,13 +2466,13 @@ components:
           type: string
           enum: [Active,Inactive]
           description: Status display
-
-# --------------- Channel Model -----------------
+            
+# --------------- Channel Model ----------------- 
     category:
       type: object
       properties:
         id:
-          type: integer
+          type: string
           description: Channel Id
         name:
           type: string
@@ -2516,10 +2515,10 @@ components:
         is_connected:
           type: boolean
           description: Is connected
+      
+      
 
-
-
-# --------------- Creates New Client Model - (missing: id, has_light_logo, has_dark_logo, created_by_user, created_by_user_id, formatted_creation_time, formatted_last_modification_time, creation_time, last_modification_time, reporting_status_display, io_tool_status_display)  -----------------
+# --------------- Creates New Client Model - (missing: id, has_light_logo, has_dark_logo, created_by_user, created_by_user_id, formatted_creation_time, formatted_last_modification_time, creation_time, last_modification_time, reporting_status_display, io_tool_status_display)  ----------------- 
     createClient:
       type: object
       required:
@@ -2568,13 +2567,13 @@ components:
           type: string
           description: Website
         account_manager_user_id:
-          type: integer
+          type: string
           description: Account Manager User Id
         crm_id:
-          type: integer
+          type: string
           description: CRM Id
         billing_id:
-          type: integer
+          type: string
           description: Billing Id
         additional_details_1:
           type: string
@@ -2593,16 +2592,16 @@ components:
           type: string
           description: Report language
         source_service_id:
-          type: integer
+          type: string
           description: Source service Id
         cluster_id:
-          type: integer
+          type: string
           description: Please refer to <a href="#tag/Business-Units">Business Units</a> to obtain all existing Business Unit Ids
         default_reporting_profile_id:
-          type: integer
+          type: string
           description: Please refer to <a href="#tag/Data-Profiles">Data Profiles</a> to obtain all existing Data Profile Ids
         client_category_id:
-          type: integer
+          type: string
           description: Please refer to <a href="#tag/Client's-Categories">Client's Categories</a> to obtain all existing Client Category Ids
         reporting_status:
           type: string
@@ -2619,19 +2618,19 @@ components:
           description: Has HIPAA data
         client_group_ids:
           type: array
-          items:
-            type: integer
+          items: 
+            type: string
             description: Please refer to <a href="#tag/Client-Group">Client Group</a> to obtain all existing Client Group Ids
         activate_tapleads:
           type: boolean
           description: Activate TapLeads
-
-# --------------- Client Model (GET) -----------------
+          
+# --------------- Client Model (GET) ----------------- 
     client:
       type: object
       properties:
         id:
-          type: integer
+          type: string
           description: Client Id
         company_name:
           type: string
@@ -2673,7 +2672,7 @@ components:
           type: string
           description: Website
         account_manager_user_id:
-          type: integer
+          type: string
           description: Account Manager User Id
         has_light_logo:
           type: boolean
@@ -2684,10 +2683,10 @@ components:
           default: false
           description: Has dark logo
         crm_id:
-          type: integer
+          type: string
           description: CRM Id
         billing_id:
-          type: integer
+          type: string
           description: Billing Id
         additional_details_1:
           type: string
@@ -2703,7 +2702,7 @@ components:
           default: false
           description: Enable Lead Management Module
         created_by_user_id:
-          type: integer
+          type: string
           description: Created by User Id; please refer to <a href="#tag/Users">User Id</a> to obtain all existing User Ids
         created_by_user:
           type: string
@@ -2712,7 +2711,7 @@ components:
           type: string
           description: Report language (if available)
         source_service_id:
-          type: integer
+          type: string
           description: Source service Id
         creation_time:
           type: integer
@@ -2721,13 +2720,13 @@ components:
           type: integer
           description: Time of last modification
         cluster_id:
-          type: integer
+          type: string
           description: Please refer to <a href="#tag/Business-Units">Business Units</a> to obtain all existing Business Unit Ids
         default_reporting_profile_id:
-          type: integer
+          type: string
           description: Please refer to <a href="#tag/Data-Profiles">Data Profiles</a> to obtain all existing Data Profile Ids
         client_category_id:
-          type: integer
+          type: string
           description: Please refer to <a href="#tag/Client's-Categories">Client's Categories</a> to obtain all existing Client Category Ids
         reporting_status:
           type: string
@@ -2750,8 +2749,8 @@ components:
           description: Formatted last modification time
         client_group_ids:
           type: array
-          items:
-            type: integer
+          items: 
+            type: string
             description: Please refer to <a href="#tag/Client-Group">Client Group</a> to obtain all existing Client Group Ids
         activate_tapleads:
           type: boolean
@@ -2764,31 +2763,31 @@ components:
           type: string
           enum: [pending_mapping,active,hold,terminated]
           description: TapOrders status display
-
-
-# --------------- Client Category Model -----------------
+          
+    
+# --------------- Client Category Model -----------------     
     clientCategory:
       type: object
       properties:
         id:
-          type: integer
+          type: string
           description: Client Category Id
         name:
           type: string
           description: Client Category
-
-# --------------- Client Group Model -----------------
+      
+# --------------- Client Group Model -----------------         
     clientGroup:
       type: object
       properties:
         id:
-          type: integer
+          type: string
           description: Client Group Id
         name:
           type: string
           description: Client Group
         cluster_id:
-          type: integer
+          type: string
           description: Please refer to <a href="#tag/Business-Units">Business Units</a> to obtain all existing Business Unit Ids
         group_type:
           type: string
@@ -2806,7 +2805,7 @@ components:
         updated at:
           type: integer
           description: Updated time
-        formatted_created_at:
+        formatted_created_at: 
           type: string
           description: Formatted creation time
         formatted_updated_at:
@@ -2814,29 +2813,16 @@ components:
           description: Formatted updated time
         client_ids:
           type: array
-          items:
-            type: integer
+          items: 
+            type: string
           description: Please refer to <a href="#tag/Clients">Clients</a> to obtain all existing Client Ids
-      example:
-        data:
-          id: "1"
-          name: "Test Unit"
-          cluster_id: null
-          group_type: "group_of_clients"
-          has_light_logo: false
-          has_dark_logo: false
-          created_at: 1540404023
-          updated_at: 1540404023
-          formatted_created_at: "Oct 24, 2018 6:00 PM"
-          formatted_updated_at: "Oct 24, 2018 6:00 PM"
-          client_ids: [1]
-
-# --------------- Data Profile Model -----------------
+  
+# --------------- Data Profile Model -----------------          
     dataProfile:
       type: object
       properties:
         id:
-          type: integer
+          type: string
           description: Data Profile Id
         name:
           type: string
@@ -2860,10 +2846,10 @@ components:
           type: boolean
           description: Hide adwords active
         cluster_id:
-          type: integer
+          type: string
           description: Business Unit Id
-
-# --------------- Data Type Model -----------------
+        
+# --------------- Data Type Model -----------------         
     dataType:
       type: object
       properties:
@@ -2885,10 +2871,10 @@ components:
           type: boolean
           description: Is numeric
         precision:
-          type: integer
+          type: integer  
           description: Precision
-
-# --------------- Date Range Model -----------------
+  
+# --------------- Date Range Model -----------------  
     dateRange:
       type: object
       properties:
@@ -2913,8 +2899,8 @@ components:
         comparison_period:
           type: integer
           description: Comparison Period
-
-# --------------- Language Model -----------------
+          
+# --------------- Language Model -----------------           
     language:
       type: object
       properties:
@@ -2924,22 +2910,22 @@ components:
         name:
           type: string
           description: Name
-
-# --------------- Lead Model -----------------
+          
+# --------------- Lead Model -----------------  
     lead:
       type: object
       properties:
         id:
-          type: integer
+          type: string
           description: Id
         lead_id:
-          type: integer
+          type: string
           description: Lead Id
         client_id:
           type: integer
           description: Client Id
         campaign_id:
-          type: integer
+          type: string
           description: Campaign Id
         campaign_name:
           type: string
@@ -2972,7 +2958,7 @@ components:
           type: integer
           description: Timestamp - Unix Time Stamp
         third_party_id:
-          type: integer
+          type: string
           description: Third party id
         note_count:
           type: string
@@ -2984,16 +2970,16 @@ components:
           type: string
           description: Type
         service_lead_id:
-          type: integer
+          type: string
           description: Service lead Id
         service_id:
-          type: integer
+          type: string
           description: Service Id
         service_name:
           type: string
           description: Service name
         end_customer_id:
-          type: integer
+          type: string
           description: End Customer Id
         visibility:
           type: string
@@ -3041,7 +3027,7 @@ components:
           type: string
           description: string
         client_billing_id:
-          type: integer
+          type: string
           description: Client billing Id
         client_additional_details_1:
           type: string
@@ -3053,7 +3039,7 @@ components:
           type: string
           description: Client additional details 3
         client_crm_id:
-          type: integer
+          type: string
           description: client crm Id
         customer_name:
           type: string
@@ -3062,7 +3048,7 @@ components:
           type: string
           description: Client name value
         client_name_value_id:
-          type: integer
+          type: string
           description: Client name value Id
         client_name_tag:
           type: string
@@ -3071,13 +3057,13 @@ components:
           type: string
           description: Client name color
         client_name_tag_id:
-          type: integer
+          type: string
           description: Client name tag Id
         customer_number_value:
           type: string
           description: Customer number value
         customer_number_value_id:
-          type: integer
+          type: string
           description: Customer number value Id
         customer_number_tag:
           type: string
@@ -3086,13 +3072,13 @@ components:
           type: string
           description: Customer number color
         customer_number_tag_id:
-          type: integer
+          type: string
           description: Customer number tag Id
         customer_email_value:
           type: string
           description: Customer email value
         customer_email_value_id:
-          type: integer
+          type: string
           description: Customer email value Id
         customer_email_tag:
           type: string
@@ -3101,13 +3087,13 @@ components:
           type: string
           description: Customer email color
         customer_email_tag_id:
-          type: integer
+          type: string
           description: Customer email tag Id
         tracking_source_value:
           type: string
           description: Tracking source value
         tracking_source_value_id:
-          type: integer
+          type: string
           description: Tracking source value Id
         tracking_source_tag:
           type: string
@@ -3116,7 +3102,7 @@ components:
           type: string
           description: Tracking source color
         tracking_source_tag_id:
-          type: integer
+          type: string
           description: Tracking source tag Id
         row_grouping_count:
           type: string
@@ -3137,45 +3123,45 @@ components:
           type: array
           items:
             type: string
-          description: Tags
+          description: Tags 
+        
 
-
-# --------------- Order Item Model -----------------
+# --------------- Order Item Model ----------------- 
     orderItem:
       type: object
       properties:
         id:
-          type: integer
+          type: string
           description: Order item Id
         service_id:
-          type: integer
+          type: string
           description: Service Id
         customer_id:
-          type: integer
+          type: string
           description: Customer Id
         item_id:
-          type: integer
+          type: string
           description: Item Id
         mapping_date:
           type: string
           description: Mapping date
         connection_setting_id:
-          type: integer
+          type: string
           description: Connection setting Id
         first_level_mapping:
-          type: integer
+          type: string
           description: First level mapping
         second_level_mapping:
-          type: integer
+          type: string
           description: Second level mapping
 
-
-# --------------- Role Model -----------------
+          
+# --------------- Role Model -----------------            
     role:
       type: object
       properties:
         id:
-          type: integer
+          type: string
           description: Role Id
         name:
           type: string
@@ -3184,12 +3170,12 @@ components:
           type: string
           description: Role type
         cluster_id:
-          type: integer
+          type: string
           description: Business Unit Id
         reporting_template_ids:
           type: array
           items:
-            type: integer
+            type: string
           description: Reporting Template Ids
         manage_dashboard:
           type: boolean
@@ -3197,15 +3183,15 @@ components:
         can_manage_alerts:
           type: boolean
           description: Can manage alerts
+          
 
-
-
-# --------------- Service (Data Sources) Model -----------------
+            
+# --------------- Service (Data Sources) Model -----------------  
     service:
       type: object
       properties:
         service_id:
-          type: integer
+          type: string
           description: Service Id
         name:
           type: string
@@ -3265,7 +3251,7 @@ components:
           type: string
           description: Custom icon
         child_of_service_id:
-          type: integer
+          type: string
           description: Child of service Id
         preferred:
           type: string
@@ -3276,16 +3262,16 @@ components:
         service_icon:
           type: string
           description: Service icon
-
+            
 # --------------- Information about Service (Data Sources) Model -----------------
     infoService:
       type: object
       properties:
         id:
-          type: integer
+          type: string
           description: Id
         service_id:
-          type: integer
+          type: string
           description: Service Id
         connect_steps:
           type: string
@@ -3330,17 +3316,17 @@ components:
               properties:
                 null:
                   type: string
-                  description: Properties
-
-# --------------- ServiceDataView (Data Sources) Model -----------------
+                  description: Properties 
+                  
+# --------------- ServiceDataView (Data Sources) Model -----------------                  
     serviceDataView:
       type: object
-      properties:
+      properties: 
         customer_id:
-          type: integer
+          type: string
           description: Customer Id
         campaign_id:
-          type: integer
+          type: string
           description: Campaign Id
         campaign_name:
           type: string
@@ -3351,7 +3337,7 @@ components:
         subject:
           type: string
           description: Subject
-        type:
+        type: 
           type: string
           description: Type
         ViewEvents:
@@ -3373,7 +3359,7 @@ components:
           type: string
           description: Client reporting status
         client_billing_id:
-          type: integer
+          type: string
           description: Client billing Id
         client_additional_details_1:
           type: string
@@ -3385,7 +3371,7 @@ components:
           type: string
           description: Client additional details 3
         client_crm_id:
-          type: integer
+          type: string
           description: Client CRM Id
         _client_cluster_name:
           type: string
@@ -3396,18 +3382,18 @@ components:
         _client_category:
           type: string
           description: Client Category
+          
+              
 
+# --------------- DataView Result Model ----------------- 
 
+# --------------- Field Result Model ----------------- 
 
-# --------------- DataView Result Model -----------------
-
-# --------------- Field Result Model -----------------
-
-
-# --------------- CreateUser Model (fields NOT displayed: id, has_light_logo, has_dark_logo, creation_time, user_type_display, country_display, timezone_display, status_display, formatted_creation-time, hipaa_acknowledgement_timestamp) ------------------
+            
+# --------------- CreateUser Model (fields NOT displayed: id, has_light_logo, has_dark_logo, creation_time, user_type_display, country_display, timezone_display, status_display, formatted_creation-time, hipaa_acknowledgement_timestamp) ------------------            
     createUser:
       type: object
-      required:
+      required: 
         - first_name
         - last_name
         - user_type
@@ -3418,8 +3404,8 @@ components:
         - role_id
         - reporting_profile_id
       properties:
-        client_id:
-          type: integer
+        client_id: 
+          type: string
           description: Client Id - This is **mandatory** when user_type = "client"
         user_type:
           type: string
@@ -3427,7 +3413,7 @@ components:
           default: client
           description: User type
           # description: Link to be added here "Please refer to <a href="#tag/Roles">TYPE</a> to obtain all possible role types and ids"
-        company_name:
+        company_name: 
           type: string
           description: Company Name
         first_name:
@@ -3461,10 +3447,10 @@ components:
           type: string
           description: Password
         cluster_id:
-          type: integer
+          type: string
           description: Please refer to <a href="#tag/Business-Units">Business Units</a> to obtain all of the exisiting business unit id
         external_user_id:
-          type: integer
+          type: string
           description: External User Id
         additional_details_1:
           type: string
@@ -3496,7 +3482,7 @@ components:
           type: string
           description: Country
         timezone:
-          type: string
+          type: string 
           default: default
           description: Timezone
           # link to another endpoint (all available user timezones), once that starts working
@@ -3504,7 +3490,7 @@ components:
           type: string
           enum: [active,inactive]
           description: Status
-        show_services_overview:
+        show_services_overview: 
           type: string
           default: default
           description: Show services overview
@@ -3513,27 +3499,27 @@ components:
           default: default
           description: Show categories overview
         role_id:
-          type: integer
+          type: string
           description: Please refer to <a href="#tag/Roles">Roles</a> to obtain all possible role types and ids
         io_tool_role_id:
-          type: integer
+          type: string
           description: Please refer to <a href="#tag/Roles">Roles</a> to obtain all possible role types and ids
         client_group_id:
-          type: integer
+          type: string
           description: This is mandatory when user_type = "agent". Please refer to <a href="#tag/Client-Groups">Client Groups</a> to obtain all existing client group id
         reporting_profile_id:
-          type: integer
-          default: 1
-          description: Please refer to <a href="#tag/Data-Profiles">Data Profiles</a> to obtain all of the exisiting data profile id
-# --------------- User Model (GET) -----------------
+          type: string
+          default: "1"
+          description: Please refer to <a href="#tag/Data-Profiles">Data Profiles</a> to obtain all of the exisiting data profile id 
+# --------------- User Model (GET) -----------------    
     user:
       type: object
       properties:
         id:
-          type: integer
+          type: string
           description: User Id
-        client_id:
-          type: integer
+        client_id: 
+          type: string
           description: Client Id - This is mandatory when user_type = "client"
         user_type:
           type: string
@@ -3541,7 +3527,7 @@ components:
           default: client
           description: User type
           # description: Link to be added here please refer to <a href="#tag/Roles">TYPE</a> to obtain all user types, once that endpoints starts working again
-        company_name:
+        company_name: 
           type: string
           description: Company Name
         first_name:
@@ -3572,10 +3558,10 @@ components:
           type: string
           description: Email address
         cluster_id:
-          type: integer
+          type: string
           description: Please refer to <a href="#tag/Business-Units">Business Units</a> to obtain all of the exisiting business unit id
         external_user_id:
-          type: integer
+          type: string
           description: External User Id
         additional_details_1:
           type: string
@@ -3613,7 +3599,7 @@ components:
           type: string
           description: Country
         timezone:
-          type: string
+          type: string 
           # link to another endpoint (all available user timezones), once that starts working
           default: default
           description: Timezone
@@ -3627,7 +3613,7 @@ components:
         creation_time:
           type: integer
           description: Creation time
-        show_services_overview:
+        show_services_overview: 
           type: string
           default: default
           description: Show services overview
@@ -3636,41 +3622,47 @@ components:
           default: default
           description: Show categories overview
         role_id:
-          type: integer
+          type: string
           description: Please refer to <a href="#tag/Roles">Roles</a> to obtain all possible role types and ids
         io_tool_role_id:
-          type: integer
+          type: string
           description: Please refer to <a href="#tag/Roles">Roles</a> to obtain all possible role types and ids
         client_group_id:
-          type: integer
+          type: string
           description: This is mandatory when user_type = "agent". Please refer to <a href="#tag/Client-Groups">Client Groups</a> to obtain all existing client group id
         reporting_profile_id:
-          type: integer
-          default: 1
+          type: string
+          default: "1"
           description: Please refer to <a href="#tag/Data-Profiles">Data Profiles</a> to obtain all of the exisiting data profile id
-        user_type_display:
+        user_type_display: 
           type: string
           enum: [Super Admin,Business Unit Admin,Agent,Client]
           description: User type display
         default_home_page_display:
           type: string
-          description: Default Home Page Display - This field will be returned only if the value is set
+          description: Default Home Page Display
+          
+          
+            **Note&#58;**This field will be returned only if the field *default_home_page* is set
         io_tool_notification_frequency_display:
           type: string
           enum: [Never,Real-time]
           default: null
-          description: IOTool notification frequency display
+          description: IOTool notification frequency display 
+          
+          
+            **Note&#58;** This field will be returned only if the field *io_tool_notification_frequency* is set
         country_display:
           type: string
           description: Country display
-
-
+            
+            
             **Note&#58;** This field is NOT returned if the *user_type* is "agent"
-        timezone_display:
+        timezone_display: 
           type: string
           description: Timezone display
-
-
+          
+          
             **Note&#58;** This field is NOT returned if the *user_type* is "agent"
         status_display:
           type: string
@@ -3679,7 +3671,7 @@ components:
         formatted_creation_time:
           type: string
           description: Formatted creation time
-# --------------- Error Msg/Responses Model-----------------
+# --------------- Error Msg/Responses Model-----------------  
     error_400:
       type: object
       properties:
@@ -3695,8 +3687,8 @@ components:
                 errorcode:
                   type: string
                   description: Errorcode
-      # REVIEW THIS EXAMPLE
-      example:
+      # REVIEW THIS EXAMPLE            
+      example: 
         fault:
           faultstring: 'Unable to identify proxy for host: https_vhost and url/: /v'
           detail:
@@ -3716,12 +3708,12 @@ components:
                 errorcode:
                   type: string
                   description: Errorcode
-      example:
+      example: 
         fault:
           faultstring: 'Invalid Access Token'
           detail:
             errorcode: 'keymanagement.service.invalid_access_token'
-
+    
     error_403:
       type: object
       properties:
@@ -3743,7 +3735,7 @@ components:
           description: Status
       example:
         error: true
-        data:
+        data: 
           - "You are not allowed to use this feature"
         warnings: []
         status: 403
@@ -3754,7 +3746,7 @@ components:
         error:
           type: boolean
           description: Error
-        data:
+        data: 
           type: array
           description: Data
           items:
@@ -3777,7 +3769,7 @@ components:
     #   properties:
     #     data:
     #       type: object
-    #       oneOf:
+    #       oneOf: 
     #         - $ref: '#/components/schemas/clientGroup'
     #         - $ref: '#/components/schemas/user'
     #         - $ref: '#/components/schemas/clientCategory'
@@ -3800,9 +3792,9 @@ components:
     #       type: array
     #       items:
     #         type: string
-    #     status:
+    #     status: 
     #       type: integer
-
+          
     response_200_clusters:
       type: object
       properties:
@@ -3816,7 +3808,7 @@ components:
           description: Warnings
           items:
             type: string
-        status:
+        status: 
           type: integer
           description: Status
 
@@ -3833,7 +3825,7 @@ components:
           description: Warnings
           items:
             type: string
-        status:
+        status: 
           type: integer
           description: Status
 
@@ -3850,10 +3842,10 @@ components:
           description: Warnings
           items:
             type: string
-        status:
-          type: integer
+        status: 
+          type: integer 
           description: Status
-
+          
     response_200_new_edit_client_user:
       type: object
       properties:
@@ -3861,7 +3853,7 @@ components:
           type: object
           properties:
             id:
-              type: integer
+              type: string
               description: Id
         error:
           type: boolean
@@ -3871,8 +3863,8 @@ components:
           description: Warnings
           items:
             type: string
-        status:
-          type: integer
+        status: 
+          type: integer 
           description: Status
 
     response_200_clientcategories:
@@ -3890,10 +3882,10 @@ components:
           description: Warnings
           items:
             type: string
-        status:
+        status: 
           type: integer
           description: Status
-
+          
     response_200_clientgroups:
       type: object
       properties:
@@ -3907,10 +3899,10 @@ components:
           description: Warnings
           items:
             type: string
-        status:
+        status: 
           type: integer
           description: Status
-
+          
     response_200_dataprofiles:
       type: object
       properties:
@@ -3924,10 +3916,10 @@ components:
           description: Warnings
           items:
             type: string
-        status:
+        status: 
           type: integer
           description: Status
-
+          
     response_200_datatypes:
       type: object
       properties:
@@ -3943,10 +3935,10 @@ components:
           description: Warnings
           items:
             type: string
-        status:
+        status: 
           type: integer
           description: Status
-
+          
     response_200_daterange:
       type: object
       properties:
@@ -3960,10 +3952,10 @@ components:
           description: Warnings
           items:
             type: string
-        status:
-          type: integer
+        status: 
+          type: integer 
           description: Status
-
+          
     response_200_languages:
       type: object
       properties:
@@ -3979,10 +3971,10 @@ components:
           description: Warnings
           items:
             type: string
-        status:
+        status: 
           type: integer
           description: Status
-
+          
     response_200_leads:
       type: object
       properties:
@@ -3996,10 +3988,10 @@ components:
           description: Warnings
           items:
             type: string
-        status:
+        status: 
           type: integer
           description: Status
-
+          
     response_200_roles:
       type: object
       properties:
@@ -4013,10 +4005,10 @@ components:
           description: Warnings
           items:
             type: string
-        status:
+        status: 
           type: integer
           description: Status
-
+          
     response_200_services:
       type: object
       properties:
@@ -4030,10 +4022,10 @@ components:
           description: Warnings
           items:
             type: string
-        status:
+        status: 
           type: integer
           description: Status
-
+          
     response_200_servicesdataview:
       type: object
       properties:
@@ -4049,10 +4041,10 @@ components:
           description: Warnings
           items:
             type: string
-        status:
+        status: 
           type: integer
           description: Status
-
+          
     response_200_infoservices:
       type: object
       properties:
@@ -4066,10 +4058,10 @@ components:
           description: Warnings
           items:
             type: string
-        status:
+        status: 
           type: integer
           description: Status
-
+          
     response_200_servicesorderitem:
       type: object
       properties:
@@ -4083,10 +4075,10 @@ components:
           description: Warnings
           items:
             type: string
-        status:
+        status: 
           type: integer
           description: Status
-
+          
     response_200_users:
       type: object
       properties:
@@ -4100,53 +4092,53 @@ components:
           description: Warnings
           items:
             type: string
-        status:
+        status: 
           type: integer
           description: Status
+          
 
-
-
-
+        
+        
 
   securitySchemes:
     oAuth2ClientCredentials:
       type: oauth2
       description: |
-
+        
         As a first step, you can request your OAuth client credentials by sending an email to api-developer@tapclicks.com.<br>
         You will need to provide a valid and active TapClicks account *email address* and the complete domain name that you have access to (*https://<span></span>your_instance.tapclicks.com*).<br>
-        This request will be answered by assigning to you a unique Client ID (`<client_id>`) and a unique Client Secret (`<client_secret>`). Make sure to store your Client Secret securely.
+        This request will be answered by assigning to you a unique Client Id (`CLIENT_ID`) and a unique Client Secret (`CLIENT_SECRET`). Make sure to store your Client Secret securely.
 
-        This set of values will allow you to obtain an Access Token (`<access_token>`) that will grant you access to the API.
-
+        This set of values will allow you to obtain an Access Token (`ACCESS_TOKEN`) that will grant you access to the API.
+        
         **To obtain the Access Token:**
 
         ```
         curl -X POST \
-        -d "client_id=<client_id>&client_secret=<client_secret>&grant_type=client_credentials" \
+        -d "client_id=CLIENT_ID&client_secret=CLIENT_SECRET&grant_type=client_credentials" \
         "https://api.tapclicks.com/oauth/accesstoken"
-
+        
         ```
 
         **Base URL and Authorization Header:**
         The base URL for all API calls is https://api.tapclicks.com/v2
-
+        
         The Access Token needs to be included in every single API call in the Authorization Header as a type Bearer.
-
+        
         ```
         curl -X GET https://api.tapclicks.com/v2/ \
-        -H "Authorization: Bearer <access_token>"
-
+        -H "Authorization: Bearer ACCESS_TOKEN"
+        
         ```
-
+        
         **Get New Access Token:**
-        The Access Token has a limited lifetime. You can request another Access Token using your client_id and client_secret with a refresh_accesstoken call.
-
+        The Access Token has a limited lifetime. You can request another Access Token using your client_id and client_secret with a refresh_accesstoken call. 
+        
         ```
         curl -X POST -d \
-        "client_id=<client_id>&client_secret=<client_secret>&grant_type=client_credentials" \
+        "client_id=CLIENT_ID&client_secret=CLIENT_SECRET&grant_type=client_credentials" \
         "https://api.tapclicks.com/oauth/refresh_accesstoken"
-
+        
         ```
 
         The Refresh Token also has a limited lifetime. The lifetime (expires_in) is expressed in seconds
@@ -4161,13 +4153,13 @@ components:
             "access_token": string,
             "expires_in": integer
           }
-
-
+          
+          
           Bad Requests: Status 401 BAD REQUEST
           {
             "access_token": null,
             "expires_in": null
-          }
+          }          
 
           Bad Requests: Status 401 BAD REQUEST
           {
@@ -4188,7 +4180,7 @@ components:
               }
             }
           }
-
+          
           Bad Request: Status 404 BAD REQUEST
           {
             "fault": {
@@ -4198,19 +4190,19 @@ components:
               }
             }
           }
-
+          
         ```
 
 
-      flows:
-        clientCredentials:
+      flows: 
+        clientCredentials: 
           tokenUrl: https://api.tapclicks.com/oauth/accesstoken
           refreshUrl: https://api.tapclicks.com/oauth/refresh_accesstoken
           scopes: {}
     bearerAuth:            # arbitrary name for the security scheme
       type: http
       scheme: bearer
-      bearerFormat: JWT
-
+      bearerFormat: JWT           
+    
 security:
   - bearerAuth: []
