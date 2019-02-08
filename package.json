@@ -6,6 +6,6 @@
   },
   "private": true,
   "scripts": {
-    "start": "npx redoc-cli serve ./spec/swagger.yaml --watch"
+    "start": "npx redoc-cli serve ./TapClicksAPI/spec/swagger.yaml --watch"
   }
 }
