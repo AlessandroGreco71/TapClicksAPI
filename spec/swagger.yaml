@@ -2914,6 +2914,7 @@ components:
       type: object
       required: 
         - name
+        - type
       properties:
         name:
           type: string
@@ -3012,7 +3013,6 @@ components:
       required:
       - company_name
       - reporting_status
-      - iotool_status
       - default_reporting_profile_id
       properties:
         company_name:
@@ -3106,6 +3106,9 @@ components:
           type: string
           enum: [presale,active,inactive,terminated]
           description: TapOrders status
+          
+          
+            **Note&#58;** This field is <font color="red">**required**</font> if the TapOrders module is active
         has_hipaa_data:
           type: boolean
           description: Has HIPAA data
