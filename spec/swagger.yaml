@@ -321,6 +321,22 @@ paths:
                     "name": "East Coast Unit",
                     "member_cluster_ids": "6,23"
                   }
+                  
+          'multipart/form-data, boundary=----WebKitFormBoundarySMGbXJtM7VSNs0Nu':
+            schema:
+              $ref: "#/components/schemas/createCluster"
+            examples:
+              '0':
+                value: |-
+                  ------WebKitFormBoundarySMGbXJtM7VSNs0Nu
+                  Content-Disposition: form-data; name="model"
+                  {
+                    "type": "group",
+                    "name": "East Coast Unit",
+                    "member_cluster_ids": "6,23"
+                  }
+                  ------WebKitFormBoundarySMGbXJtM7VSNs0Nu--
+                  
       responses:
         '200':
           description: Ok - Successful Operation
@@ -423,6 +439,19 @@ paths:
                     "type": "single",
                     "name": "West Coast Unit"
                   }
+          'multipart/form-data, boundary=----WebKitFormBoundarySMGbXJtM7VSNs0Nu':
+            schema:
+              $ref: "#/components/schemas/createCluster"
+            examples:
+              '0':
+                value: |-
+                  ------WebKitFormBoundarySMGbXJtM7VSNs0Nu
+                  Content-Disposition: form-data; name="model"
+                  {
+                    "type": "single",
+                    "name": "West Coast Unit"
+                  }
+                  ------WebKitFormBoundarySMGbXJtM7VSNs0Nu--           
       responses:
         '200':
           description: Ok - Successful Operation
@@ -758,6 +787,21 @@ paths:
                   "reporting_status": "pending_mapping",
                   "iotool_status": "presale"
                   }
+          'multipart/form-data, boundary=----WebKitFormBoundarySMGbXJtM7VSNs0Nu':
+            schema:
+              $ref: "#/components/schemas/createClient"
+            examples:
+              '0':
+                value: |-
+                  ------WebKitFormBoundarySMGbXJtM7VSNs0Nu
+                  Content-Disposition: form-data; name="model"
+                  {
+                  "company_name": "JP Marketing",
+                  "default_reporting_profile_id": "1",
+                  "reporting_status": "pending_mapping",
+                  "iotool_status": "presale"
+                  }
+                  ------WebKitFormBoundarySMGbXJtM7VSNs0Nu--
       responses:
         '200':
           description: Ok - Successful Operation
@@ -824,6 +868,21 @@ paths:
                   "reporting_status": "pending_mapping",
                   "iotool_status": "presale"
                   }
+          'multipart/form-data, boundary=----WebKitFormBoundarySMGbXJtM7VSNs0Nu':
+            schema:
+              $ref: "#/components/schemas/createClient"
+            examples:
+              '0':
+                value: |-
+                  ------WebKitFormBoundarySMGbXJtM7VSNs0Nu
+                  Content-Disposition: form-data; name="model"
+                  {
+                  "company_name": "JP Marketing",
+                  "default_reporting_profile_id": "1",
+                  "reporting_status": "pending_mapping",
+                  "iotool_status": "presale"
+                  }
+                  ------WebKitFormBoundarySMGbXJtM7VSNs0Nu--
       responses:
         '200':
           description: Ok - Successful Operation
@@ -1148,7 +1207,22 @@ paths:
                     "group_type":"group_of_clients",
                     "cluster_id":"1",
                     "client_ids":"1,2,34"
-                  }        
+                  }  
+          'multipart/form-data, boundary=----WebKitFormBoundarySMGbXJtM7VSNs0Nu':
+            schema: 
+              $ref: "#/components/schemas/createClientGroup"
+            examples:
+              '0':
+                value: |-
+                  ------WebKitFormBoundarySMGbXJtM7VSNs0Nu
+                  Content-Disposition: form-data; name="model"
+                  {
+                    "name":"Boston",
+                    "group_type":"group_of_clients",
+                    "cluster_id":"1",
+                    "client_ids":"1,2,34"
+                  }
+                  ------WebKitFormBoundarySMGbXJtM7VSNs0Nu-- 
       responses:
         '200':
           description: Ok - Successful Operation
@@ -1254,6 +1328,21 @@ paths:
                     "cluster_id":"1",
                     "client_group_ids":"77,81,10"
                   } 
+          'multipart/form-data, boundary=----WebKitFormBoundarySMGbXJtM7VSNs0Nu':
+            schema:
+              $ref: "#/components/schemas/createClientGroup"
+            examples:
+              '0':
+                value: |-
+                  ------WebKitFormBoundarySMGbXJtM7VSNs0Nu
+                  Content-Disposition: form-data; name="model"
+                  {
+                    "name":"Boston",
+                    "group_type":"group_of_client_groups",
+                    "cluster_id":"1",
+                    "client_group_ids":"77,81,10"
+                  }
+                  ------WebKitFormBoundarySMGbXJtM7VSNs0Nu-- 
       responses:
         '200':
           description: Ok - Successful Operation
@@ -2562,6 +2651,26 @@ paths:
                   "role_id": "1",
                   "status": "active"
                   }
+          'multipart/form-data, boundary=----WebKitFormBoundarySMGbXJtM7VSNs0Nu':
+            schema:
+              $ref: "#/components/schemas/editUser"
+            examples:
+              '0':
+                value: |-
+                  ------WebKitFormBoundarySMGbXJtM7VSNs0Nu
+                  Content-Disposition: form-data; name="model"
+                  {
+                  "user_type": "agent",
+                  "email": "user@email.com",
+                  "password": "user1234",
+                  "first_name": "John",
+                  "last_name": "Doe",
+                  "reporting_profile_id": "1",
+                  "client_group_id": "1",
+                  "role_id": "1",
+                  "status": "active"
+                  }
+                  ------WebKitFormBoundarySMGbXJtM7VSNs0Nu--
       responses:
         '200':
           description: Ok - Successful Operation
@@ -2630,6 +2739,26 @@ paths:
                   "role_id": "1",
                   "status": "active"
                   }
+          'multipart/form-data, boundary=----WebKitFormBoundarySMGbXJtM7VSNs0Nu':
+            schema:
+              $ref: "#/components/schemas/createUser"
+            examples:
+              '0':
+                value: |-
+                  ------WebKitFormBoundarySMGbXJtM7VSNs0Nu
+                  Content-Disposition: form-data; name="model"
+                  {
+                  "user_type": "agent",
+                  "email": "user@email.com",
+                  "password": "user1234",
+                  "first_name": "John",
+                  "last_name": "Doe",
+                  "reporting_profile_id": "1",
+                  "client_group_id": "1",
+                  "role_id": "1",
+                  "status": "active"
+                  }
+                  ------WebKitFormBoundarySMGbXJtM7VSNs0Nu--
       responses:
         '200':
           description: Ok - Successful Operation
