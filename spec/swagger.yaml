@@ -301,6 +301,9 @@ paths:
         - BUSINESS UNITS
       summary: Edit an existing Business Unit
       description: Clusters are Business Units. This edits an existing Business Unit.
+      
+      
+        Any field that is not provided will be set to *null*. For example, if you need to edit only one field of the specified Business Unit, while leaving all other fields unchanged, you would need to pass all the parameters that were previosly set, otherwise they'll be reset to *null*.
       parameters:
         - in: path
           name: /cluster_id
@@ -762,9 +765,10 @@ paths:
       tags:
         - CLIENTS
       summary: Edit existing Client
-      description: This modifies the information of an existing Client.
+      description: This edits the information of an existing Client.
       
-        
+      
+        Any field that is not provided will be set to *null*. For example, if you need to edit only one field of the specified Client, while leaving all other fields unchanged, you would need to pass all the parameters that were previosly set, otherwise they'll be reset to *null*.<br><br>        
         Note that the payload of this POST is the same as <a href="#tag/CLIENTS/paths/~1clients/post">Create a new Client</a>.
       parameters:
         - in: path
@@ -1186,7 +1190,10 @@ paths:
       tags:
         - CLIENT GROUPS
       summary: Edit an existing Client Group
-      description: This edits an existing Client Group
+      description: This edits an existing Client Group.
+      
+      
+        Any field that is not provided will be set to *null*. For example, if you need to edit only one field of the specified Client Group, while leaving all other fields unchanged, you would need to pass all the parameters that were previosly set, otherwise they'll be reset to *null*.
       parameters:
         - in: path
           name: /clientgroup_id
@@ -2621,9 +2628,10 @@ paths:
       tags:
         - USERS
       summary: Edit an existing user
-      description: This modifies the information of an existing User.
+      description: This edits the information of an existing User.
       
       
+        Any field that is not provided will be set to *null*. For example, if you need to edit only one field of the specified User, while leaving all other fields unchanged, you still need to pass all the parameters that were previosly set, otherwise they'll be reset to *null*.<br><br>
         Note that the payload of this POST is the same as <a href="#tag/USERS/paths/~1users/post">Create a new user</a>.
       parameters:
         - in: path
