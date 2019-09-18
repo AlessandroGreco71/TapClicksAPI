@@ -2903,11 +2903,7 @@ paths:
             type: string  
           required: false
           description: |
-            This will return orders that have been updated within a date range.
-            
-            
-            An update is a modification made on an order.<br>
-            By appending **include_line_items** to the date, the results will include changes made on an order's line item. 
+            This will return orders that have been updated within a date range.<br>
             
             
             The datetime is based on the user's timezone preferences in the Tap platform.
@@ -2915,6 +2911,10 @@ paths:
               * YYYY-MM-DD
               * YYYY-MM-DDTHH:MM:SS
               * YYYY-MM-DDTHH:MM:SSP - P is the timezone offset as specified by the RFC 3339 standard (UTC)
+              
+            An update is a modification made on an order.<br>
+            By appending **include_line_items** to the date, the results will include changes made on an order's line item. 
+            
               
             Example&#58; `"https://api.tapclicks.com/v2/iotool/orderQueries?updated_between=2019-03-01T12:00:00|2019-03-02|include_line_items"`<br>
             This will return all orders that were updated within that date range - if a line item was updated, the order for that line item will also be returned.              
