@@ -2904,27 +2904,36 @@ paths:
           required: false
           description: |
             This will return orders that have been updated within a date range.
-            An update is a modification made on an order.
-            By appending include_line_items to the date, the results will include changes made on an order's line item. 
+            
+            
+            An update is a modification made on an order.<br>
+            By appending **include_line_items** to the date, the results will include changes made on an order's line item. 
+            
+            
             The datetime is based on the user's timezone preferences in the Tap platform.
             Format accepted&#58;
               * YYYY-MM-DD
               * YYYY-MM-DDTHH:MM:SS
               * YYYY-MM-DDTHH:MM:SSP - P is the timezone offset as specified by the RFC 3339 standard (UTC)
+              
+            Example&#58; `"https://api.tapclicks.com/v2/iotool/orderQueries?updated_between=2019-03-01T12:00:00|2019-03-02|include_line_items"`<br>
+            This will return all orders that were updated within that date range - if a line item was updated, the order for that line item will also be returned.              
             
           example: https://api.tapclicks.com/v2/iotool/orderQueries?updated_between=2019-03-01T12:00:00|2019-03-02
-            Example&#58; `"https://api.tapclicks.com/v2/iotool/orderQueries?updated_between=2019-03-01T12:00:00|2019-03-02|include_line_items"`<br>
-            This will return all orders that were updated within that date range - if a line item was updated, the order for that line item will also be returned.
+
             
         - in: query
           name: inline
           schema:
             type: string
           required: false
-          description: This inlines a child relationship into the parent. This is valid only for relationship that represent one record, such as client (not an array of records, such as attributes)
+          description: |
+            This inlines a child relationship into the parent. <br>
+            This is valid only for relationship that represent one record, such as client (not an array of records, such as attributes).
           
           
-            Its input is a list of fields (representing an association), separated by a comma. If the field represents a "has many" relationship (a list of records), it is possible to request fields in that relationship by placing those fields inside brackets.
+            Its input is a list of fields (representing an association), separated by a comma. <br>
+            If the field represents a "has many" relationship (a list of records), it is possible to request fields in that relationship by placing those fields inside brackets.
           example: https://api.tapclicks.com/v2/iotool/orderQueries?inline=status,attributes[form_field],line_items[attributes[product_field]]
       
       responses:
