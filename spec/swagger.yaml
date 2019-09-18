@@ -2903,9 +2903,7 @@ paths:
             type: string  
           required: false
           description: |
-            This will return orders that have been updated within a date range.<br>
-            
-            
+            This will return orders that have been updated within a date range.<br><br>
             The datetime is based on the user's timezone preferences in the Tap platform.
             Format accepted&#58;
               * YYYY-MM-DD
@@ -2928,8 +2926,8 @@ paths:
             type: string
           required: false
           description: |
-            This inlines a child relationship into the parent. <br>
-            This is valid only for relationship that represent one record, such as client (not an array of records, such as attributes).
+            This inlines a child relationship into the parent. <br><br>
+            This is valid only for relationship that represent one record, such as client (not an array of records, such as attributes).<br>
           
           
             Its input is a list of fields (representing an association), separated by a comma. <br>
