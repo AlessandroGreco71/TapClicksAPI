@@ -2864,6 +2864,106 @@ paths:
             curl -X GET \
             'https://api.tapclicks.com/v2/users/values/set?fields=user_type' \
             -H 'Authorization: Bearer YOUR_ACCESS_TOKEN_HERE'
+            
+# --------------------- Orders --------------------------             
+  /iotool/orderQueries:
+    get:
+      tags:
+        - ORDERS
+      summary: Orders / Line Items
+      description: --- this is the description --- this is probably going to be very long
+      parameters:
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 1000
+          required: false
+          description: This will limit the number of returned orders (the example will return 2 orders).
+            If this is omitted, the API will return 1000 orders by default.
+          example: https://api.tapclicks.com/v2/iotool/orderQueries?limit=2
+        - in: query
+          name: page
+          schema:
+            type: integer
+          required: false
+          description: This will allow to navigate between the pages of records. A page contains 1000 orders by default, unless it is defined by the page query parameter.
+            The example will return...
+          example: https://api.tapclicks.com/v2/iotool/orderQueries?limit=2&page=2
+        - in: query
+          name: fields
+          schema:
+            type: string 
+          required: false
+          description: This will return the selected fields in the data structure. If one or more of these fields represents a relationship, it's possible to specify the fields in that relationship by including them inside brackets.
+          example: https://api.tapclicks.com/v2/iotool/orderQueries?fields=id,status,client[first_name],attributes[value]
+        - in: query
+          name: updated_between
+          schema:
+            type: string  
+          required: false
+          description: |
+            This will return orders that have been updated within a date range.
+            An update is a modification made on an order.
+            By appending include_line_items to the date, the results will include changes made on an order's line item. 
+            The datetime is based on the user's timezone preferences in the Tap platform.
+            Format accepted&#58;
+              * YYYY-MM-DD
+              * YYYY-MM-DDTHH:MM:SS
+              * YYYY-MM-DDTHH:MM:SSP - P is the timezone offset as specified by the RFC 3339 standard (UTC)
+            
+          example: https://api.tapclicks.com/v2/iotool/orderQueries?updated_between=2019-03-01T12:00:00|2019-03-02
+            Example&#58; `"https://api.tapclicks.com/v2/iotool/orderQueries?updated_between=2019-03-01T12:00:00|2019-03-02|include_line_items"`<br>
+            This will return all orders that were updated within that date range - if a line item was updated, the order for that line item will also be returned.
+            
+        - in: query
+          name: inline
+          schema:
+            type: string
+          required: false
+          description: This inlines a child relationship into the parent. This is valid only for relationship that represent one record, such as client (not an array of records, such as attributes)
+          
+          
+            Its input is a list of fields (representing an association), separated by a comma. If the field represents a "has many" relationship (a list of records), it is possible to request fields in that relationship by placing those fields inside brackets.
+          example: https://api.tapclicks.com/v2/iotool/orderQueries?inline=status,attributes[form_field],line_items[attributes[product_field]]
+      
+      responses:
+        '200':
+          description: Ok Successful Operation
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/Orders_simple_attribute'
+                  - $ref: '#/components/schemas/Orders_record_attribute'
+                  - $ref: '#/components/schemas/Orders_special_attribute'
+                  - $ref: '#/components/schemas/Orders_simple_line_item_attribute'
+                  - $ref: '#/components/schemas/Orders_record_line_item_attribute'
+              example:
+                data:
+                  id: "1"
+                  client_id: null
+                error: false
+                warnings: []
+                status: 200       
+        
+  
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
 # ---------------- QUERY PARAMETERS ------------------------
 components:
@@ -3691,6 +3791,276 @@ components:
             type: string
           description: Tags 
           
+# --------------- Order Simple Attribute Model ----------------- 
+    order_simple_attribute:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Order Id
+        created_at:
+          type: string
+          description: Order's creation date - YYYY-MM-DD HH:MM:SS
+        updated_at:
+          type: string
+          description: Order's last updated date - YYYY-MM-DD HH:MM:SS
+        status:
+          type: object
+          description: Order's status
+        order_type:
+          type: object
+          description: Order's type
+        cluster:
+          type: object
+          description: Order's Business Unit
+        client:
+          type: object
+          description: Order's Client
+        sales_person:
+          type: object
+          description: Order's sales person
+        workflow_step:
+          type: object
+          description: Order's workflow step
+        attributes:
+          type: object
+          description: Order's <font color="red">*simple*</font> attributes
+          properties:
+            id:
+              type: string
+              description: Attributes's ID
+            value:
+              type: string
+              description: Value of the attribute - Note&#58; the Type of this field may vary depending on the value submitted in the order's form
+            description:
+              type: string
+              description: The value will always be **simple**
+        line_items:
+          type: object
+          description: Order's line items
+          
+# --------------- Order Record Attribute Model ----------------- 
+    order_record_attribute:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Order Id
+        created_at:
+          type: string
+          description: Order's creation date - YYYY-MM-DD HH:MM:SS
+        updated_at:
+          type: string
+          description: Order's last updated date - YYYY-MM-DD HH:MM:SS
+        status:
+          type: object
+          description: Order's status
+        order_type:
+          type: object
+          description: Order's type
+        cluster:
+          type: object
+          description: Order's Business Unit
+        client:
+          type: object
+          description: Order's Client
+        sales_person:
+          type: object
+          description: Order's sales person
+        workflow_step:
+          type: object
+          description: Order's workflow step
+        attributes:
+          type: object
+          description: Order's <font color="red">*record*</font> attributes
+          properties:
+            id:
+              type: string
+              description: Attribute's ID
+            value:
+              type: string
+              description: External record ID that this attribute is mapped to
+            description:
+              type: string
+              description: The value will always be **record**
+            summary_value:
+              type: string
+              description: Data that represents the external record
+            instance_api_url:
+              type: string
+              description: Complete instance url to fetch the external record
+            tap_api_url:
+              type: string
+              description: Complete TapAPI url to fetch the external record
+            form_field:
+              type: object
+              description: Attribute's form field.
+        line_items:
+          type: object
+          description: Order's line items
+    
+# --------------- Order Special Attribute Model ----------------- 
+    order_special_attribute:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Order Id
+        created_at:
+          type: string
+          description: Order's creation date - YYYY-MM-DD HH:MM:SS
+        updated_at:
+          type: string
+          description: Order's last updated date - YYYY-MM-DD HH:MM:SS
+        status:
+          type: object
+          description: Order's status
+        order_type:
+          type: object
+          description: Order's type
+        cluster:
+          type: object
+          description: Order's Business Unit
+        client:
+          type: object
+          description: Order's Client
+        sales_person:
+          type: object
+          description: Order's sales person
+        workflow_step:
+          type: object
+          description: Order's workflow step
+        attributes:
+          type: object
+          description: Order's <font color="red">*special*</font> attributes
+          properties:
+            cancel_order_reason:
+              type: string
+              description: Cancellation reason - *record* Attribute Type
+            create_order_user_id:
+              type: string
+              description: Created by - *record* Attribute Type
+            submit_user_id:
+              type: string
+              description: User ID of the user that submitted the order - *simple* Attribute Type
+            submit_user_name:
+              type: string
+              description: Full name and email of the user that submitted the order - *simple* Attribute Type
+        line_items:
+          type: object
+          description: Order's line items
+    
+# --------------- Order Simple Line Item Attribute Model ----------------- 
+    order_simple_line_item_attribute:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Order Id
+        created_at:
+          type: string
+          description: Order's creation date - YYYY-MM-DD HH:MM:SS
+        updated_at:
+          type: string
+          description: Order's last updated date - YYYY-MM-DD HH:MM:SS
+        status:
+          type: object
+          description: Order's status
+        order_type:
+          type: object
+          description: Order's type
+        cluster:
+          type: object
+          description: Order's Business Unit
+        client:
+          type: object
+          description: Order's Client
+        sales_person:
+          type: object
+          description: Order's sales person
+        workflow_step:
+          type: object
+          description: Order's workflow step
+        attributes:
+          type: object
+          description: Order's attributes
+        line_items:
+          type: object
+          description: Order's line items - <font color="red">*simple*</font>
+          properties:
+            id:
+              type: string
+              description: Attribute's Id
+            value:
+              type: string
+              description: Value of the attribute - Note&#58; the Type of this field may vary depending on the value submitted in the order's form
+            description:
+              type: string
+              description: The value will always be **simple**
+            product_field:
+              type: object
+              description: Attribute's form field.
+    
+# --------------- Order Record Line Item Attribute Model ----------------- 
+    order_record_line_item_attribute:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Order Id
+        created_at:
+          type: string
+          description: Order's creation date - YYYY-MM-DD HH:MM:SS
+        updated_at:
+          type: string
+          description: Order's last updated date - YYYY-MM-DD HH:MM:SS
+        status:
+          type: object
+          description: Order's status
+        order_type:
+          type: object
+          description: Order's type
+        cluster:
+          type: object
+          description: Order's Business Unit
+        client:
+          type: object
+          description: Order's Client
+        sales_person:
+          type: object
+          description: Order's sales person
+        workflow_step:
+          type: object
+          description: Order's workflow step
+        attributes:
+          type: object
+          description: Order's attributes
+        line_items:
+          type: object
+          description: Order's line items - <font color="red">*record*</font>
+          properties:
+            id:
+              type: string
+              description: Attribute's Id
+            value:
+              type: string
+              description: External record ID that this attribute is mapped to
+            description:
+              type: string
+              description: The value will always be **record**
+            summary_value:
+              type: string
+              description: Data that represents the external record
+            instance_api_url:
+              type: string
+              description: Complete instance url to fetch the external record
+            tap_api_url:
+              type: string
+              description: Complete TapAPI url to fetch the external record
+            product_field:
+              type: object
+              description: Attributes's product field
+
 # --------------- Role Model -----------------            
     role:
       type: object
@@ -4841,6 +5211,36 @@ components:
         status: 
           type: integer
           description: Status
+          
+    Orders_simple_attribute:
+      type: object
+      properties:
+        orders:
+          $ref: '#/components/schemas/order_simple_attribute'
+          
+    Orders_record_attribute:
+      type: object
+      properties:
+        orders:
+          $ref: '#/components/schemas/order_record_attribute'    
+    
+    Orders_special_attribute:
+      type: object
+      properties:
+        orders:
+          $ref: '#/components/schemas/order_special_attribute'    
+    
+    Orders_simple_line_item_attribute:
+      type: object
+      properties:
+        orders:
+          $ref: '#/components/schemas/order_simple_line_item_attribute'    
+    
+    Orders_record_line_item_attribute:
+      type: object
+      properties:
+        orders:
+          $ref: '#/components/schemas/order_record_line_item_attribute'    
           
     response_200_roles:
       type: object
