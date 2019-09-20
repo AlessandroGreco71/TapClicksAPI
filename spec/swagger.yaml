@@ -250,7 +250,7 @@ paths:
             To remove items use **!** before the value.
             
             
-            Example&#58; `"https://api.tapclicks.com/v2/clusters?id=!12"`<br>
+            Example&#58; <code><a style="color: #3B464C; text-decoration: none;">"https://api.tapclicks.com/v2/clusters?id=!12"</code><br>
             This will return all clusters, except for the one with id = 12
           example: https://api.tapclicks.com/v2/clusters?id=10,11,12
 
@@ -685,7 +685,7 @@ paths:
             To remove items use **!** before the value.
             
 
-            Example&#58; `"https://api.tapclicks.com/v2/clients?id=!12"`<br>
+            Example&#58; <code><a style="color: #3B464C; text-decoration: none;">"https://api.tapclicks.com/v2/clients?id=!12"</code><br>
             This will return all Clients, except for the one with id = 12
           example: https://api.tapclicks.com/v2/clients?company_name=JL%20Marketing
 
@@ -983,7 +983,7 @@ paths:
             To remove items use **!** before the value.
             
           
-            Example&#58; `"https://api.tapclicks.com/v2/clientcategories?id=!12"`<br>
+            Example&#58; <code><a style="color: #3B464C; text-decoration: none;">"https://api.tapclicks.com/v2/clientcategories?id=!12"</code><br>
             This will return all Client categories, except for the one with id = 12
           example: https://api.tapclicks.com/v2/clientcategories?name=Automotive       
        
@@ -1140,7 +1140,7 @@ paths:
             To remove items use **!** before the value.
            
             
-            Example&#58; `"https://api.tapclicks.com/v2/clientgroups?id=!12"`<br>
+            Example&#58; <code><a style="color: #3B464C; text-decoration: none;">"https://api.tapclicks.com/v2/clientgroups?id=!12"</code><br>
             This will return all Client Groups, except for the one with id = 12
           example: https://api.tapclicks.com/v2/clientgroups?id=10,15,16
       responses:
@@ -1472,7 +1472,8 @@ paths:
             To remove items use **!** before the value.
           
             
-            Example&#58; `"https://api.tapclicks.com/v2/reportingprofiles?id=!12"`<br>
+            Example&#58; <br>
+            <code><a style="color: #3B464C; text-decoration: none;">"https://api.tapclicks.com/v2/reportingprofiles?id=!12"</code><br>
             This will return all data profiles, except for the one with id = 12
           example: https://api.tapclicks.com/v2/reportingprofiles?name=Default%20Profile,Internal-Employee
       responses:
@@ -1836,7 +1837,7 @@ paths:
             To remove items use **!** before the value.
             
             
-            Example&#58; `"https://api.tapclicks.com/v2/leads?id=!12"`<br>
+            Example&#58; <code><a style="color: #3B464C; text-decoration: none;">"https://api.tapclicks.com/v2/leads?id=!12"</code><br>
             This will return all leads, except for the one with id = 12
           example: https://api.tapclicks.com/v2/leads?id=10,11,12
         - in: query
@@ -2074,7 +2075,7 @@ paths:
             To remove items use **!** before the value.
             
             
-            Example&#58; `"https://api.tapclicks.com/v2/roles?id=!12"`<br>
+            Example&#58; <code><a style="color: #3B464C; text-decoration: none;">"https://api.tapclicks.com/v2/roles?id=!12"</code><br>
             This will return all roles, except for the one with id = 12
           example: https://api.tapclicks.com/v2/roles?name=Sales,Vendor
         
@@ -2200,7 +2201,7 @@ paths:
             To remove items use **!** before the value.
             
             
-            Example&#58; `"https://api.tapclicks.com/v2/services?id=!12"`<br>
+            Example&#58; <code><a style="color: #3B464C; text-decoration: none;">"https://api.tapclicks.com/v2/services?id=!12"</code><br>
             This will return all services, except for the one with id = 12
           example: https://api.tapclicks.com/v2/services?id=10,11,12
       responses:
@@ -2409,7 +2410,8 @@ paths:
             To remove items use **!** before the value.
             
             
-            Example&#58; `"http://api.tapclicks.com/v2/services/34/data/cgn?fields=client_name,ClickCount,ImpressionCount&&customer_id=!921"`<br>
+            Example&#58; <br>
+            <code><a style="color: #3B464C; text-decoration: none;">"http://api.tapclicks.com/v2/services/34/data/cgn?fields=client_name,ClickCount,ImpressionCount&&customer_id=!921"</code><br>
             This will return the selected fields from all Customers, except for the customer id = 921
           example: http://api.tapclicks.com/v2/services/34/data/cgn?fields=client_name,ClickCount,ImpressionCount&&customer_id=12,13
         - in: query
@@ -2610,7 +2612,7 @@ paths:
             To remove items use **!** before the value.
           
             
-            Example&#58; `"https://api.tapclicks.com/v2/users?id=!12"`<br>
+            Example&#58; <code><a style="color: #3B464C; text-decoration: none;">"https://api.tapclicks.com/v2/users?id=!12"</code><br>
             This will return all Users, except for the one with id = 12
           example: https://api.tapclicks.com/v2/users?id=1,2,3          
 
@@ -2999,7 +3001,7 @@ paths:
             An update is a modification made on an order, but by appending **include_line_items** to the date, the results will include changes made on an order's line item. <br>
             
             Example&#58; <br>
-            <code><a style="color: #000000; text-decoration: none;">"https://api.tapclicks.com/v2/iotool/orderQueries?updated_between=2019-03-01T12:00:00|2019-03-02|include_line_items"</a></code><br>
+            <code><a style="color: #3B464C; text-decoration: none;">"https://api.tapclicks.com/v2/iotool/orderQueries?updated_between=2019-03-01T12:00:00|2019-03-02|include_line_items"</a></code><br>
 
             This will return all orders that were updated within that date range - if a line item was updated, the order for that line item will also be returned.              
             
