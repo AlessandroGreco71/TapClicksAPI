@@ -2999,7 +2999,8 @@ paths:
             An update is a modification made on an order, but by appending **include_line_items** to the date, the results will include changes made on an order's line item. <br>
             
             
-            Example&#58; `"https://api.tapclicks.com/v2/iotool/orderQueries?updated_between=2019-03-01T12:00:00|2019-03-02|include_line_items"`<br>
+            Example&#58; <br>
+            `"https://api.tapclicks.com/v2/iotool/orderQueries?updated_between=2019-03-01T12:00:00|2019-03-02|include_line_items"`<br>
             This will return all orders that were updated within that date range - if a line item was updated, the order for that line item will also be returned.              
             
           example: https://api.tapclicks.com/v2/iotool/orderQueries?updated_between=2019-03-01T12:00:00|2019-03-02
