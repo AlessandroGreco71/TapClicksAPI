@@ -114,7 +114,11 @@ tags:
       | https://api.tapclicks.com/v2/services/{id}/data/cgn?page=0,10&timegrouping=yearly     | 
       | **7. Get certain metrics only**                                                       | 
       | https://api.tapclicks.com/v2/services/{id}/data/cgn?page=0,10&groupby=customer_id&fields=customer_id,CTR,AverageCPC,ClickCount&sort=customer_id                                 | 
-      
+  - name: ORDERS
+    description: |
+      Orders correspond to the overall or specific purchase that your customer is making. <br>
+      It typically includes things like Campaign Names, Campaign dates and is associated with the customer or advertiser that is making the purchase. <br>
+      Sales team will use it the most to create and maintain Orders.
       
   
 paths:
@@ -2936,9 +2940,8 @@ paths:
         - ORDERS
       summary: Orders / Line Items
       description: |
-        DESCRIPTION ABOUT ORDERS---
+        This will return the Orders that are present in your TapClicks instance
       
-        Note&#58; if the query parameter id is omitted, the API will respond with an array of order objects.
       parameters:
         - in: query
           name: id
@@ -2946,7 +2949,8 @@ paths:
             type: integer
           required: false
           description: |
-            Numeric Id of the Order to get. If omitted, it will return all orders.
+            Numeric Id of the Order to get. If this is included, the response will be an order object.<br>
+            If this is omitted, the response will be an array of order objects.
         - in: query
           name: limit
           schema:
@@ -2990,7 +2994,7 @@ paths:
             Accepted formats&#58;
               * YYYY-MM-DD
               * YYYY-MM-DDTHH:MM:SS
-              * YYYY-MM-DDTHH:MM:SSP - P is the timezone offset as specified by the RFC 3339 standard (UTC)
+              * YYYY-MM-DDTHH:MM:SSP - P is the timezone offset as specified by the RFC 3339 standard
               
             An update is a modification made on an order, but by appending **include_line_items** to the date, the results will include changes made on an order's line item. <br>
             
@@ -3020,26 +3024,32 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Orders'
-        
+                $ref: '#/components/schemas/Orders'
+        '400':
+          description: Error on client's side
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_400_TO'                
+        '401':
+          description: Invalid access token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_401'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_500_TO'
+      x-code-samples:
+        - lang: 'Curl'
+          source: |
+            curl -X GET \
+            'https://api.tapclicks.com/v2/iotool/orderQueries' \
+            -H 'Authorization: Bearer YOUR_ACCESS_TOKEN_HERE'
   
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
 
 # ---------------- QUERY PARAMETERS ------------------------
 components:
@@ -5088,16 +5098,6 @@ components:
         warnings: []
         status: 200               
           
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
 # --------------- Error Msg/Responses Model-----------------  
     error_400:
       type: object
@@ -5144,6 +5144,15 @@ components:
           faultstring: 'Invalid Access Token'
           detail:
             errorcode: 'keymanagement.service.invalid_access_token'
+            
+    error_400_TO:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+      example:
+        error: "Parameter not supported"
     
     error_403:
       type: object
@@ -5170,6 +5179,15 @@ components:
           - "You are not allowed to use this feature"
         warnings: []
         status: 403
+
+    error_500_TO:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+      example:
+        error: "Sorry! Something went wrong. Please contact us"
 
     error_404:
       type: object
