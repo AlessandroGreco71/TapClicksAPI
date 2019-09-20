@@ -3,13 +3,13 @@ info:
   title: TAPCLICKS
   description: |-
   
-    This is the 2.6.20 version of the API Specification for TapClicks.
+    This is the 2.6.27 version of the API Specification for TapClicks.
 
     # AUTHENTICATION
     The **TapClicks** API uses the OAuth 2.0 protocol for authentication and authorization (<a href="https://tools.ietf.org/html/rfc6749#section-4.4">Client Credentials Grant</a>).<br>
     All requests must be authenticated and must include a valid access token.
 
-  version: '2.6.20'
+  version: '2.6.27'
   termsOfService: 'https://www.tapclicks.com/terms-of-use/'
   contact:
     # name: 
@@ -114,7 +114,7 @@ tags:
       | https://api.tapclicks.com/v2/services/{id}/data/cgn?page=0,10&timegrouping=yearly     | 
       | **7. Get certain metrics only**                                                       | 
       | https://api.tapclicks.com/v2/services/{id}/data/cgn?page=0,10&groupby=customer_id&fields=customer_id,CTR,AverageCPC,ClickCount&sort=customer_id                                 | 
-  - name: ORDERS
+  - name: ORDERS (TapOrders)
     description: |
       Orders correspond to the overall or specific purchase that your customer is making. <br>
       It typically includes things like Campaign Names, Campaign dates and is associated with the customer or advertiser that is making the purchase. <br>
@@ -2939,7 +2939,7 @@ paths:
   /iotool/orderQueries:
     get:
       tags:
-        - ORDERS
+        - ORDERS (TapOrders)
       summary: Orders / Line Items
       description: |
         This will return the Orders that are present in your TapClicks instance
