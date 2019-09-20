@@ -2259,7 +2259,69 @@ paths:
             curl -X GET \
             https://api.tapclicks.com/v2/services/44 \
             -H 'Authorization: Bearer YOUR_ACCESS_TOKEN_HERE'
-                
+
+  /services{/id}/data/data_views:
+    get:
+      tags:
+        - SERVICES (DATA SOURCES)
+      summary: DataView Ids for a service
+      description: This returns the dataview ids that you will need to pull the data
+      parameters:
+        - in: path
+          name: /id
+          schema:
+            type: integer
+          required: true
+          description: Id of the service to get
+      responses:
+        '200':
+          description: Ok - Successful Operation
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/response_200_servicesdataviewids'
+              example:
+                data:
+                  - id: "cgn"
+                    name: "Campaigns"
+                    extended_id: "bingcgn"
+                    is_geo: false
+                  - id: "adgroup"
+                    name: "Ad Groups"
+                    extended_id: "bingadgroup"
+                    is_geo: false
+                  - id: "keyword"
+                    name: "Keywords"
+                    extended_id: "bingkeyword"
+                    is_geo: false
+                error: false
+                status: 200
+        '400':
+          description: Error on client's side
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_400'              
+        '401':
+          description: Invalid access token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_401' 
+        '404':
+          description: API Route not found 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_404'
+      x-code-samples:
+        - lang: 'Curl'
+          source: |
+            curl -X GET \
+            https://api.tapclicks.com/v2/services/36/data/data_views \
+            -H 'Authorization: Bearer YOUR_ACCESS_TOKEN_HERE'
+                    
+         
   /services{/id}/data{/data_view_id}: #{/field}
     get:
       tags:
@@ -3935,16 +3997,112 @@ components:
               description: Workflow step description
         attributes:
           type: array
+          description: Order's attributes - This is the data that was submitted in an **order's form** in the Tap system
           items:
             type: object
-            description: Order's attributes - This is the data that was submitted in an **order's form** in the Tap system
             anyOf:
               - $ref: '#/components/schemas/order_simple_attribute'
               - $ref: '#/components/schemas/order_record_attribute'
         line_items:
           type: object
           description: Order's line items
+          properties:
+            id:
+              type: string
+              description: Line item Id
+            created_at:
+              type: string
+              description: Line item's creation date - YYYY-MM-DDTHH:MM:SS&#177;HH:MM
+            updated_at:
+              type: string
+              description: Line item's last updated date - YYYY-MM-DDTHH:MM:SS&#177;HH:MM
+            status:
+              type: object
+              description: Line item status
+              properties:
+                id:
+                  type: string
+                  description: Status Id
+                name:
+                  type: string
+                  description: Status name
+            product:
+              type: object
+              description: Line item product
+              properties:
+                id:
+                  type: string
+                  description: Product Id
+                name:
+                  type: string
+                  description: Product name
+            workflow_step:
+              type: object
+              description: Line item workflow step
+              properties:
+                id:
+                  type: string
+                  description: Workflow step Id
+                name:
+                  type: string
+                  description: Workflow step name
+                description:
+                  type: string
+                  description: Workflow step description
+            attributes:
+              type: array
+              description: Line item's attributes - This is the data that was submitted in an **line item's form** in the Tap system
+              items:
+                type: object
+                anyOf:
+                  - $ref: '#/components/schemas/line_item_simple_attribute'
+                  - $ref: '#/components/schemas/line_item_record_attribute'
+
           
+# --------------- Order's Line Item Simple Attribute Model -----------------
+    line_item_simple_attribute:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Attribute Id
+        value:
+          type: string
+          description: Value of the attribute - **Note&#58;** the data type of this field may vary depending on the value submitted in the order's form
+        description:
+          type: string
+          description: The type of attribute - The value will always be `simple`
+          enum: [simple]
+        form_field:
+          $ref: '#/components/schemas/order_form_field'
+
+# --------------- Order's Line Item Record Attribute Model -----------------
+    line_item_record_attribute:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Attributes's ID
+        value:
+          type: string
+          description: Value of the attribute - The external record id that is mapped to
+        description:
+          type: string
+          description: The type of attribute - The value will always be `record`
+          enum: [record]
+        summary_value:
+          type: string
+          description: Summary value - Data that represents the external record
+        instance_api_url:
+          type: string
+          description: Instance api url - A complete instance url to fetch the external record
+        tap_api_url:
+          type: string
+          description: Tap api url - A complete TapAPI url to fetch
+        form_field:
+          $ref: '#/components/schemas/order_form_field'
+
+
 # --------------- Order's Simple Attribute Model -----------------          
     order_simple_attribute:
       type: object
@@ -3975,7 +4133,7 @@ components:
           description: Attributes's ID
         value:
           type: string
-          description: Value of the attribute - **Note&#58;** the data type of this field may vary depending on the value submitted in the order's form
+          description: Value of the attribute - The external record id that is mapped to
         description:
           type: string
           description: The type of attribute - The value will always be `record`
@@ -4068,6 +4226,12 @@ components:
           type: string
           description: Form field active status
           enum: [null]
+          
+# --------------- Order Line Item's Attribute Model -----------------            
+    
+
+
+
 
 # --------------- Role Model -----------------            
     role:
@@ -4097,8 +4261,6 @@ components:
           type: boolean
           description: Can manage alerts
           
-
-            
 # --------------- Service (Data Sources) Model -----------------  
     service:
       type: object
@@ -4176,6 +4338,24 @@ components:
           type: string
           description: Service icon
                   
+# --------------- ServiceDataViewId (Data Sources) Model ----------------- 
+    serviceDataViewId:
+      type: object
+      properties:
+        id:
+          type: string
+          description: DataView Id
+        name:
+          type: string
+          description: DataView name
+        extended_id:
+          type: string
+          description: Extended dataview Id
+        is_geo:
+          type: boolean
+          description: Is geo
+          enum: [true, false]
+
 # --------------- ServiceDataView (Data Sources) Model -----------------                  
     serviceDataView:
       type: object
@@ -5224,7 +5404,9 @@ components:
       type: object
       properties:
         orders:
-          $ref: '#/components/schemas/order'
+          type: array
+          items:
+            $ref: '#/components/schemas/order'
       example:
         orders:
           - id: "4"
@@ -5395,6 +5577,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/serviceDataView'
+        error:
+          type: boolean
+          description: Error
+        warnings:
+          type: array
+          description: Warnings
+          items:
+            type: string
+        status: 
+          type: integer
+          description: Status
+
+    response_200_servicesdataviewids:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/serviceDataViewId'
         error:
           type: boolean
           description: Error
