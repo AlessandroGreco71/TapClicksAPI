@@ -4066,7 +4066,9 @@ components:
                     description: Workflow step description
               attributes:
                 type: array
-                description: Line item's attributes - This is the data that was submitted in an **line item's form** in the Tap system
+                description: Line item's attributes - This is the data that was submitted in an **line item's form** in the Tap system<br><br>
+                
+                  **Note&#58;** the API will not return the attribute representing an *unchecked CheckBox*, unless its value has already been edited.
                 items:
                   type: object
                   anyOf:
@@ -4134,7 +4136,9 @@ components:
           enum: [simple]
         form_field:
           type: object
-          description: The attribute's in the form field
+          description: The attribute's in the form field<br><br>
+          
+            **Note&#58;** the API will not return the attribute representing an *unchecked CheckBox*, unless its value has already been edited.
           oneOf:
             - $ref: '#/components/schemas/order_form_field'
             - $ref: '#/components/schemas/order_form_field_specialS'
