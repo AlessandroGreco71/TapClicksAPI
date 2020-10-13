@@ -200,7 +200,7 @@ paths:
             enum: [0,1]
           description: The API will provide more or all the info for the available fields.
           example:
-            url: https://api.tapclicks.com/v2/clusters/22?metadata=1
+            url: https://api.tapclicks.com/v2/clusters/22?metadata=1testest
         - in: query
           name: page
           required: false
