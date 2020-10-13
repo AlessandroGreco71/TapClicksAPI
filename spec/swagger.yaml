@@ -2894,7 +2894,7 @@ paths:
         *fields*=**timezone -**  `(https://api.tapclicks.com/v2/users/values/set?fields=timezone)`
         
       parameters:
-        - in: path
+        - in: query
           name: fields
           required: true
           schema:
