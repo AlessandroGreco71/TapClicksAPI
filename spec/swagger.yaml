@@ -198,7 +198,7 @@ paths:
           schema:
             type: integer
             enum: [0,1]
-            example: https://api.tapclicks.com/v2/clusters/22?metadata=1
+            example: https://api.tapclicks.com
           description: The API will provide more or all the info for the available fields.
         - in: query
           name: page
