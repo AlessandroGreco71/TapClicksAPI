@@ -3,7 +3,7 @@ info:
   title: TAPCLICKS
   description: |-
   
-    This is the 2.6.27 version of the API Specification for TapClicks (TapReports, TapAnalytics & TapOrders).
+    This is the 2.6.27 version of the API Specification for TapClicks.
 
     # AUTHENTICATION
     The **TapClicks** API uses the OAuth 2.0 protocol for authentication and authorization (<a href="https://tools.ietf.org/html/rfc6749#section-4.4">Client Credentials Grant</a>).<br>
@@ -17,7 +17,7 @@ info:
     # email: 
   x-logo:
     # url: 'https://jobs.mindtheproduct.com/wp-content/uploads/company_logos/2018/04/tapclicks_logo_png-250x93.png'
-    url: 'http://developers.tapclicks.com/images/tapclicks-logo-color.png'
+    url: 'https://www.tapclicks.com/static-templates/img/tapclicks-logo-color.png'
     backgroundColor: "#283237"
 
   
@@ -2536,7 +2536,100 @@ paths:
             curl -X GET \
             https://api.tapclicks.com/v2/services/44/data/cgn \
             -H 'Authorization: Bearer YOUR_ACCESS_TOKEN_HERE'
-     
+            
+  /services/manage/fetch_service{/id}:
+    get:
+      tags:
+        - SERVICES (DATA SOURCES)
+      summary: Beta - Start fetch for a service
+      description: Beta - This endpoint will start a fetch for a single service
+        **Note&#58;** Please note that this is a Beta endpoint and it **currently returns a Text Value**
+        
+        
+        The response will change in the future, so we'll be able to provide debug information in JSON
+      parameters:
+        - in: path
+          name: /id
+          schema:
+            type: integer
+          required: true
+          description: Id of the service
+      responses: 
+        '200':
+          description: Ok - Successful Operation      
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/response_200_servicesdataview'
+              example:
+                data:
+                  - customer_id: "234"
+                    campaign_id: "1"
+                    campaign_name: "Intro to Email Tool"
+                    subtype: null
+                    subject: "Read My Blog"
+                    type: "BATCH_EMAIL"
+                    ViewEvents: "<span class='button-group'><a href='#/service/details/172/event/1' clasS='button-second'>View Event</a></span>"
+                    client_name: "HubS Email Campaign - September 30 2017"
+                    _client_city: ""
+                    _client_state: ""
+                    _client_zip_code: ""
+                    client_reporting_status: "active"
+                    client_billing_id: ""
+                    client_additional_details_1: ""
+                    client_additional_details_2: ""
+                    client_additional_details_3: ""
+                    client_crm_id: ""
+                    _client_cluster_name: null
+                    _client_account_manager: null
+                    _client_category: null
+                  - customer_id: "234"
+                    campaign_id: "2"
+                    campaign_name: "Test Notification"
+                    subtype: null
+                    subject: "It's ok to say I don't know"
+                    type: "AUTOMATED_EMAIL"
+                    ViewEvents: "<span class='button-group'><a href='#/service/details/173/event/7' clasS='button-second'>View Event</a></span>"
+                    client_name: "HubS Email Campaign - August 15 2017"
+                    _client_city: ""
+                    _client_state: ""
+                    _client_zip_code: ""
+                    client_reporting_status: "active"
+                    client_billing_id: ""
+                    client_additional_details_1: ""
+                    client_additional_details_2: ""
+                    client_additional_details_3: ""
+                    client_crm_id: ""
+                    _client_cluster_name: null
+                    _client_account_manager: null
+                    _client_category: null
+                error: false
+                warnings: []
+                status: 200                    
+        '400':
+          description: Error on client's side
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_400'              
+        '401':
+          description: Invalid access token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_401' 
+        '404':
+          description: API Route not found 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_404'
+      x-code-samples:
+        - lang: 'Curl'
+          source: |
+            curl -X GET \
+            https://api.tapclicks.com/v2/services/44/data/cgn \
+            -H 'Authorization: Bearer YOUR_ACCESS_TOKEN_HERE'             
 # --------------------- Users --------------------------  
   /users{/user_id}:
     get:
@@ -4017,63 +4110,59 @@ components:
               - $ref: '#/components/schemas/order_simple_attribute'
               - $ref: '#/components/schemas/order_record_attribute'
         line_items:
-          type: array
+          type: object
           description: Order's line items
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                description: Line item Id
-              created_at:
-                type: string
-                description: Line item's creation date - YYYY-MM-DDTHH:MM:SS&#177;HH:MM
-              updated_at:
-                type: string
-                description: Line item's last updated date - YYYY-MM-DDTHH:MM:SS&#177;HH:MM
-              status:
+          properties:
+            id:
+              type: string
+              description: Line item Id
+            created_at:
+              type: string
+              description: Line item's creation date - YYYY-MM-DDTHH:MM:SS&#177;HH:MM
+            updated_at:
+              type: string
+              description: Line item's last updated date - YYYY-MM-DDTHH:MM:SS&#177;HH:MM
+            status:
+              type: object
+              description: Line item status
+              properties:
+                id:
+                  type: string
+                  description: Status Id
+                name:
+                  type: string
+                  description: Status name
+            product:
+              type: object
+              description: Line item product
+              properties:
+                id:
+                  type: string
+                  description: Product Id
+                name:
+                  type: string
+                  description: Product name
+            workflow_step:
+              type: object
+              description: Line item workflow step
+              properties:
+                id:
+                  type: string
+                  description: Workflow step Id
+                name:
+                  type: string
+                  description: Workflow step name
+                description:
+                  type: string
+                  description: Workflow step description
+            attributes:
+              type: array
+              description: Line item's attributes - This is the data that was submitted in an **line item's form** in the Tap system
+              items:
                 type: object
-                description: Line item status
-                properties:
-                  id:
-                    type: string
-                    description: Status Id
-                  name:
-                    type: string
-                    description: Status name
-              product:
-                type: object
-                description: Line item product
-                properties:
-                  id:
-                    type: string
-                    description: Product Id
-                  name:
-                    type: string
-                    description: Product name
-              workflow_step:
-                type: object
-                description: Line item workflow step
-                properties:
-                  id:
-                    type: string
-                    description: Workflow step Id
-                  name:
-                    type: string
-                    description: Workflow step name
-                  description:
-                    type: string
-                    description: Workflow step description
-              attributes:
-                type: array
-                description: Line item's attributes - This is the data that was submitted in an **line item's form** in the Tap system<br><br>
-                
-                  **Note&#58;** the API will not return the attribute representing an *unchecked CheckBox*, unless its value has already been edited.
-                items:
-                  type: object
-                  anyOf:
-                    - $ref: '#/components/schemas/line_item_simple_attribute'
-                    - $ref: '#/components/schemas/line_item_record_attribute'
+                anyOf:
+                  - $ref: '#/components/schemas/line_item_simple_attribute'
+                  - $ref: '#/components/schemas/line_item_record_attribute'
 
           
 # --------------- Order's Line Item Simple Attribute Model -----------------
@@ -4090,8 +4179,8 @@ components:
           type: string
           description: The type of attribute - The value will always be `simple`
           enum: [simple]
-        product_field:
-          $ref: '#/components/schemas/order_product_field'
+        form_field:
+          $ref: '#/components/schemas/order_form_field'
 
 # --------------- Order's Line Item Record Attribute Model -----------------
     line_item_record_attribute:
@@ -4116,8 +4205,8 @@ components:
         tap_api_url:
           type: string
           description: Tap api url - A complete TapAPI url to fetch
-        product_field:
-          $ref: '#/components/schemas/order_product_field'
+        form_field:
+          $ref: '#/components/schemas/order_form_field'
 
 
 # --------------- Order's Simple Attribute Model -----------------          
@@ -4136,9 +4225,7 @@ components:
           enum: [simple]
         form_field:
           type: object
-          description: The attribute's in the form field<br><br>
-          
-            **Note&#58;** the API will not return the attribute representing an *unchecked CheckBox*, unless its value has already been edited.
+          description: The attribute's in the form field
           oneOf:
             - $ref: '#/components/schemas/order_form_field'
             - $ref: '#/components/schemas/order_form_field_specialS'
@@ -4189,7 +4276,6 @@ components:
         data_type:
           type: string
           description: Form field data type
-          enum: [currency, percentage, date, decimal, file, integer, string, time, tinyint, json]
         active:
           type: string
           description: Form field active status
@@ -4247,28 +4333,12 @@ components:
           description: Form field active status
           enum: [null]
           
-# --------------- Order (LineItem) Form Product Field Model -----------------
-    order_product_field:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Product field Id
-        field_name:
-          type: string
-          description: Product field name
-        display_name:
-          type: string
-          description: Product field display name
-        data_type:
-          type: string
-          description: Product field data type
-          enum: [currency, percentage, date, decimal, file, integer, string, time, tinyint, json]
-        active:
-          type: string
-          description: Product field active status
-          enum: ["0","1"]           
+# --------------- Order Line Item's Attribute Model -----------------            
     
+
+
+
+
 # --------------- Role Model -----------------            
     role:
       type: object
