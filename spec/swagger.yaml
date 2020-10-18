@@ -2541,13 +2541,12 @@ paths:
     get:
       tags:
         - SERVICES (DATA SOURCES)
-      summary: Start fetch for a service - <code>><a style="color: #3B464C; text-decoration: none;">Beta</></code>
-
-      description: Beta - This endpoint will start a fetch for a single service
+      summary: Start fetch for a service - **Beta**
+      description: Beta - This endpoint will start a fetch for a single service<br>
         **Note&#58;** Please note that this is a Beta endpoint and it **currently returns a Text Value**
         
         
-        The response will change in the future, so we'll be able to provide debug information in JSON
+        The response will change in the future, so we'll eventually be able to provide debug information in JSON
       parameters:
         - in: path
           name: /id
