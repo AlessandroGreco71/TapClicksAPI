@@ -2541,7 +2541,8 @@ paths:
     get:
       tags:
         - SERVICES (DATA SOURCES)
-      summary: Beta - Start fetch for a service
+      summary: Start fetch for a service - <code>><a style="color: #3B464C; text-decoration: none;">Beta</></code>
+
       description: Beta - This endpoint will start a fetch for a single service
         **Note&#58;** Please note that this is a Beta endpoint and it **currently returns a Text Value**
         
