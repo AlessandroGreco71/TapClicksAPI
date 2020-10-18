@@ -17,7 +17,7 @@ info:
     # email: 
   x-logo:
     # url: 'https://jobs.mindtheproduct.com/wp-content/uploads/company_logos/2018/04/tapclicks_logo_png-250x93.png'
-    url: 'https://www.tapclicks.com/static-templates/img/tapclicks-logo-color.png'
+    url: 'http://developers.tapclicks.com/images/tapclicks-logo-color.png'
     backgroundColor: "#283237"
 
   
@@ -2541,13 +2541,13 @@ paths:
     get:
       tags:
         - SERVICES (DATA SOURCES)
-      summary: Start fetch for a service - <font color"red">*Beta</font>
+      summary: Start fetch for a service - *Beta
       description: |
         This endpoint starts a fetch for a single service.
 
 
         **Note&#58;** Beta endpoints are subject to change.<br>
-        It currently returns a Text Value - the response may change in the future and we may be able to provide debug information in JSON
+        It currently returns a Text Value - the response may change in the future and we may be able to provide debug information in JSON.
       parameters:
         - in: path
           name: /id
