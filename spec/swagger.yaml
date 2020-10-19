@@ -4138,7 +4138,7 @@ components:
           type: string
           description: The type of attribute - The value will always be `simple`
           enum: [simple]
-        flight_field:
+        form_field:
           $ref: '#/components/schemas/flight_field'
 
 # --------------- Flight Record Attribute Model -----------------
@@ -4164,7 +4164,7 @@ components:
         tap_api_url:
           type: string
           description: Tap api url - A complete TapAPI url to fetch
-        flight_field:
+        form_field:
           $ref: '#/components/schemas/flight_field'
           
 # --------------- Order's Line Item Simple Attribute Model -----------------
