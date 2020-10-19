@@ -3,7 +3,7 @@ info:
   title: TAPCLICKS
   description: |-
   
-    This is the 2.6.27 version of the API Specification for TapClicks (TapReports, TapAnalytics & TapOrdersT).
+    This is the 2.6.27 version of the API Specification for TapClicks (TapReports, TapAnalytics & TapOrders).
 
     # AUTHENTICATION
     The **TapClicks** API uses the OAuth 2.0 protocol for authentication and authorization (<a href="https://tools.ietf.org/html/rfc6749#section-4.4">Client Credentials Grant</a>).<br>
