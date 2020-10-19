@@ -3,7 +3,7 @@ info:
   title: TAPCLICKS
   description: |-
   
-    This is the 2.6.27 version of the API Specification for TapClicks (TapReports, TapAnalytics & TapOrders).
+    This is the 2.6.27 version of the API Specification for TapClicks (TapReports, TapAnalytics & TapOrdersT).
 
     # AUTHENTICATION
     The **TapClicks** API uses the OAuth 2.0 protocol for authentication and authorization (<a href="https://tools.ietf.org/html/rfc6749#section-4.4">Client Credentials Grant</a>).<br>
@@ -4115,15 +4115,15 @@ components:
                     attributes:
                       type: array
                       description: Flight's attributes
-                      
-                      
+
+
                         **Note&#58;** the API will not return the attribute representing an *unchecked CheckBox*, unless its value has already been edited.
                       items:
                         type: object
                         anyOf:
                           - $ref: '#/components/schemas/flight_simple_attribute'
                           - $ref: '#/components/schemas/flight_record_attribute'
-                          
+
 # --------------- Flight Simple Attribute Model -----------------
     flight_simple_attribute:
       type: object
@@ -4166,6 +4166,7 @@ components:
           description: Tap api url - A complete TapAPI url to fetch
         form_field:
           $ref: '#/components/schemas/flight_field'
+
           
 # --------------- Order's Line Item Simple Attribute Model -----------------
     line_item_simple_attribute:
@@ -4358,8 +4359,8 @@ components:
         active:
           type: string
           description: Product field active status
-          enum: ["0","1"]           
-          
+          enum: ["0","1"]
+
 # --------------- Flight Field Model -----------------
     flight_field:
       type: object
@@ -4380,9 +4381,9 @@ components:
         active:
           type: string
           description: Product field active status
-          enum: ["0","1"]           
-    
-# --------------- Role Model -----------------            
+          enum: ["0","1"]
+
+    # --------------- Role Model -----------------
     role:
       type: object
       properties:
@@ -5691,7 +5692,7 @@ components:
                       field_name: "dfp_ad_sizes"
                       display_name: "Sizes"
                       data_type: "string"
-                      active: "1"   
+                      active: "1"
                 flights:
                   - id: "467"
                     created_at: "2019-03-05T20:43:37+00:00"
