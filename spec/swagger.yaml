@@ -4139,7 +4139,7 @@ components:
           description: The type of attribute - The value will always be `simple`
           enum: [simple]
         flight_field:
-          $ref: '#/components/schemas/order_product_field'
+          $ref: '#/components/schemas/flight_field'
 
 # --------------- Flight Record Attribute Model -----------------
     flight_record_attribute:
@@ -4165,7 +4165,7 @@ components:
           type: string
           description: Tap api url - A complete TapAPI url to fetch
         flight_field:
-          $ref: '#/components/schemas/order_product_field'
+          $ref: '#/components/schemas/flight_field'
           
 # --------------- Order's Line Item Simple Attribute Model -----------------
     line_item_simple_attribute:
@@ -4208,7 +4208,7 @@ components:
           type: string
           description: Tap api url - A complete TapAPI url to fetch
         product_field:
-          $ref: '#/components/schemas/flight_field'
+          $ref: '#/components/schemas/order_product_field'
 
 
 # --------------- Order's Simple Attribute Model -----------------          
@@ -4360,7 +4360,7 @@ components:
           description: Product field active status
           enum: ["0","1"]           
           
-# --------------- Order (LineItem) Form Product Field Model -----------------
+# --------------- Flight Field Model -----------------
     flight_field:
       type: object
       properties:
@@ -4380,7 +4380,7 @@ components:
         active:
           type: string
           description: Product field active status
-          enum: ["0","1"]   
+          enum: ["0","1"]           
     
 # --------------- Role Model -----------------            
     role:
