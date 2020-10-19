@@ -4074,7 +4074,55 @@ components:
                   anyOf:
                     - $ref: '#/components/schemas/line_item_simple_attribute'
                     - $ref: '#/components/schemas/line_item_record_attribute'
-
+              flights:
+                type: array
+                description: Line Item's flights
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: Flight Id
+                    created_at:
+                      type: string
+                      description: Flight's creation date - YYYY-MM-DDTHH:MM:SS&#177;HH:MM
+                    updated_at:
+                      type: string
+                      description: Flight's last updated date - YYYY-MM-DDTHH:MM:SS&#177;HH:MM
+                    status:
+                      type: object
+                      description: Flight status
+                      properties:
+                        id:
+                          type: string
+                          description: Status Id
+                        name:
+                          type: string
+                          description: Status name
+                    workflow_step:
+                      type: object
+                      description: Flight workflow step
+                      properties:
+                        id:
+                          type: string
+                          description: Flight workflow step Id
+                        name:
+                          type: string
+                          description: Flight workflow step name
+                        description:
+                          type: string
+                          description: Flight workflow step description
+                    attributes:
+                      type: array
+                      description: Flight's attributes
+                      
+                        **Note&#58;** the API will not return the attribute representing an *unchecked CheckBox*, unless its value has already been edited.
+                      items:
+                        type: object
+                        anyOf:
+                          - $ref: '#/components/schemas/line_item_simple_attribute'
+                          - $ref: '#/components/schemas/line_item_record_attribute'
+                          
           
 # --------------- Order's Line Item Simple Attribute Model -----------------
     line_item_simple_attribute:
@@ -5579,6 +5627,48 @@ components:
                       display_name: "Sizes"
                       data_type: "string"
                       active: "1"   
+                flights:
+                  - id: "467"
+                    created_at: "2019-03-05T20:43:37+00:00"
+                    updated_at: "2019-03-05T20:43:37+00:00"
+                    status:
+                      id: "66"
+                      name: "Pending Fulfillment"
+                    workflow_step:
+                      id: null
+                      name: null
+                      description: null
+                    attributes:
+                      - id: "3414"
+                        value: "Programmatic Display"
+                        description: "simple"
+                        form_field:
+                          id: "1198"
+                          field_name: "product"
+                          display_name: "Product Media Type"
+                          data_type: "string"
+                          active: "1"
+                      - id: "3417"
+                        value: "NA"
+                        description: "simple"
+                        form_field:
+                          id: "1210"
+                          field_name: "targeting_notes_free_form"
+                          display_name: "Targeting Notes (Free-Form)"
+                          data_type: "string"
+                          active: "1"
+                      - id: "3428"
+                        value: "22208"
+                        description: "record"
+                        summary_value: "120x240"
+                        instance_api_url: null
+                        tap_api_url: null
+                        form_field:
+                          id: "1510"
+                          field_name: "dfp_adsizes"
+                          display_name: "Ad Sizes"
+                          data_type: "string"
+                          active: "1"
           
     response_200_roles:
       type: object
