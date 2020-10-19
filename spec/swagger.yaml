@@ -4121,9 +4121,51 @@ components:
                       items:
                         type: object
                         anyOf:
-                          - $ref: '#/components/schemas/line_item_simple_attribute'
-                          - $ref: '#/components/schemas/line_item_record_attribute'
+                          - $ref: '#/components/schemas/flight_simple_attribute'
+                          - $ref: '#/components/schemas/flight_record_attribute'
                           
+# --------------- Flight Simple Attribute Model -----------------
+    flight_simple_attribute:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Attribute Id
+        value:
+          type: string
+          description: Value of the attribute - **Note&#58;** the data type of this field may vary depending on the value selected in the flight's form field
+        description:
+          type: string
+          description: The type of attribute - The value will always be `simple`
+          enum: [simple]
+        flight_field:
+          $ref: '#/components/schemas/order_product_field'
+
+# --------------- Flight Record Attribute Model -----------------
+    flight_record_attribute:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Attributes's ID
+        value:
+          type: string
+          description: Value of the attribute - The external record id that is mapped to
+        description:
+          type: string
+          description: The type of attribute - The value will always be `record`
+          enum: [record]
+        summary_value:
+          type: string
+          description: Summary value - Data that represents the external record
+        instance_api_url:
+          type: string
+          description: Instance api url - A complete instance url to fetch the external record
+        tap_api_url:
+          type: string
+          description: Tap api url - A complete TapAPI url to fetch
+        flight_field:
+          $ref: '#/components/schemas/order_product_field'
           
 # --------------- Order's Line Item Simple Attribute Model -----------------
     line_item_simple_attribute:
@@ -4166,7 +4208,7 @@ components:
           type: string
           description: Tap api url - A complete TapAPI url to fetch
         product_field:
-          $ref: '#/components/schemas/order_product_field'
+          $ref: '#/components/schemas/flight_field'
 
 
 # --------------- Order's Simple Attribute Model -----------------          
@@ -4317,6 +4359,28 @@ components:
           type: string
           description: Product field active status
           enum: ["0","1"]           
+          
+# --------------- Order (LineItem) Form Product Field Model -----------------
+    flight_field:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Product field Id
+        field_name:
+          type: string
+          description: Product field name
+        display_name:
+          type: string
+          description: Product field display name
+        data_type:
+          type: string
+          description: Product field data type
+          enum: [currency, percentage, date, decimal, file, integer, string, time, tinyint, json]
+        active:
+          type: string
+          description: Product field active status
+          enum: ["0","1"]   
     
 # --------------- Role Model -----------------            
     role:
