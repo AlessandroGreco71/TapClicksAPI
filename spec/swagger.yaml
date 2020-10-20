@@ -4147,7 +4147,7 @@ components:
       properties:
         id:
           type: string
-          description: Attributes's ID
+          description: Attributes's Id
         value:
           type: string
           description: Value of the attribute - The external record id that is mapped to
@@ -4191,7 +4191,7 @@ components:
       properties:
         id:
           type: string
-          description: Attributes's ID
+          description: Attributes's Id
         value:
           type: string
           description: Value of the attribute - The external record id that is mapped to
@@ -4218,7 +4218,7 @@ components:
       properties:
         id:
           type: string
-          description: Attributes's ID
+          description: Attributes's Id
         value:
           type: string
           description: Value of the attribute - **Note&#58;** the data type of this field may vary depending on the value submitted in the order's form
@@ -4241,7 +4241,7 @@ components:
       properties:
         id:
           type: string
-          description: Attributes's ID
+          description: Attributes's Id
         value:
           type: string
           description: Value of the attribute - The external record id that is mapped to
@@ -4367,20 +4367,20 @@ components:
       properties:
         id:
           type: string
-          description: Product field Id
+          description: Form field Id
         field_name:
           type: string
-          description: Product field name
+          description: Form field name
         display_name:
           type: string
-          description: Product field display name
+          description: Form field display name
         data_type:
           type: string
-          description: Product field data type
+          description: Form field data type
           enum: [currency, percentage, date, decimal, file, integer, string, time, tinyint, json]
         active:
           type: string
-          description: Product field active status
+          description: Form field active status
           enum: ["0","1"]
 
     # --------------- Role Model -----------------
