@@ -2567,24 +2567,9 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/response_200_fetcheservice'
-              example: |-
-                " Dashboard oh oh update 2269<br> /// <br /> 
-                
-                
-                
-                Created batch #121746 for service #44 &<br>"
-                
-                
-                
-                  Launching batch #121746 \n
-                
-                
-                
-                
-                
-                All done.<br />
-                Alessandro &#13;
-                about hear it 
+              example:
+                "Dashboard oh oh update 2269<br> /// <br /> 
+                testing "
             
         '400':
           description: Error on client's side
