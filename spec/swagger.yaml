@@ -3,7 +3,7 @@ info:
   title: TAPCLICKS
   description: |-
   
-    This is the 2.6.27 version of the API Specification for TapClicks (TapReports, TapAnalytics & TapOrders).
+    This is the 2.6.27 version of the API Specification for TapClicks (TapReports, TapAnalytics & TapOrders).tt
 
     # AUTHENTICATION
     The **TapClicks** API uses the OAuth 2.0 protocol for authentication and authorization (<a href="https://tools.ietf.org/html/rfc6749#section-4.4">Client Credentials Grant</a>).<br>
@@ -2536,13 +2536,12 @@ paths:
             curl -X GET \
             https://api.tapclicks.com/v2/services/44/data/cgn \
             -H 'Authorization: Bearer YOUR_ACCESS_TOKEN_HERE'
-            
+
   /services/manage/fetch_service{/id}:
     get:
       tags:
         - SERVICES (DATA SOURCES)
-      summary: |-
-        Start fetch for a service **Beta**
+      summary: Start fetch for a service **Beta**
       description: |
         This triggers a fetch for a single service. It has been made available to solve specific use cases, so a reasonable use is advised (an excessive use of this endpoint may impact performance of your dashboards).<br>
         Please carefully review the API response (currently in plain text) as it may also provide possible error messages - all examples to the right panel.<br><br>
@@ -2555,15 +2554,15 @@ paths:
             type: integer
           required: true
           description: Id of the service
-      responses: 
+      responses:
         '200':
-          description: Ok - Successful Operation      
+          description: Ok - Successful Operation
           content:
             text/plain:
               schema:
                 $ref: '#/components/schemas/response_200_fetcheservice'
               examples:
-                Fetch started: 
+                Fetch started:
                   value: |
                     Dashboard update 2269
                     Created batch #121746 for service #39
@@ -2578,20 +2577,18 @@ paths:
                 Incorrect id:
                   value: |
                     Dashboard update 920<br>{"result":"error","message":"No service is configured"}
-                  
-            
         '400':
           description: Error on client's side
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_400'              
+                $ref: '#/components/schemas/error_400'
         '401':
           description: Invalid access token
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error_401' 
+                $ref: '#/components/schemas/error_401'
       x-code-samples:
         - lang: 'Curl'
           source: |
@@ -5886,10 +5883,9 @@ components:
         status: 
           type: integer
           description: Status
-        
+
     response_200_fetcheservice:
       type: string
-    
         
 
   securitySchemes:
