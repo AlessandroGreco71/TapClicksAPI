@@ -2575,7 +2575,7 @@ paths:
                     Created batch #121917 for service #39
                     Service #39 will wait - batch #121846 is currently running
                     All done.
-                Incorrect service_id:
+                Incorrect id:
                   value: |
                     Dashboard update 920<br>{"result":"error","message":"No service is configured"}
                   
