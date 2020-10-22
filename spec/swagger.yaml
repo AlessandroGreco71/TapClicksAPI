@@ -2567,8 +2567,8 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/response_200_fetcheservice'
-              example: |
-                Dashboard update 2269<br> /// <br /> 
+              example: |-
+                Dashboard oh oh update 2269<br> /// <br /> 
                 Created batch #121746 for service #44 &<br>
                 Launching batch #121746 \n
                 All done.<br />
