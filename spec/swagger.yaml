@@ -2541,7 +2541,8 @@ paths:
     get:
       tags:
         - SERVICES (DATA SOURCES)
-      summary: Start fetch for a service - **Beta
+      summary: | 
+        Start fetch for a service - **Beta**
       description: |
         This endpoint triggers a fetch for a single service.
 
