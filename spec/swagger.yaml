@@ -2544,11 +2544,11 @@ paths:
       summary: |-
         Start fetch for a service **Beta**
       description: |
-        This endpoint triggers a fetch for a single service.
+        This endpoint triggers a fetch for a single service. If a fetch is already in progress 
 
 
         **Note&#58;** Beta endpoints are subject to change.<br>
-        Please carefully review the response (currently a Text value) as it will provide you with possible error messages - For example, if you've selected an incorrect *service_id*.
+        Please carefully review the response (currently a Text value) as it may provide possible error messages - for example, if you've selected an incorrect *service_id*
         
         
         
@@ -2567,11 +2567,19 @@ paths:
             text/plain:
               schema:
                 $ref: '#/components/schemas/response_200_fetcheservice'
-              example: |
-                Dashboard update 2269
-                Created batch #121746 for service #39
-                Launching batch #121746
-                All done.
+              examples:
+                a: 
+                  value: |
+                    Dashboard update 2269
+                    Created batch #121746 for service #39
+                    Launching batch #121746
+                    All done.
+                b:
+                  value: |
+                    Dashboard update 2271
+                    Created batch #121917 for service #39
+                    Service #39 will wait - batch #121846 is currently running
+                    All done.
             
         '400':
           description: Error on client's side
