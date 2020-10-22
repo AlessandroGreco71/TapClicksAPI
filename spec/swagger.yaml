@@ -2544,9 +2544,8 @@ paths:
       summary: |-
         Start fetch for a service **Beta**
       description: |
-        This triggers a fetch for a single service. It has been made available to solve specific use cases, so a reasonable use is advised (an excessive use of this endpoint may impact performance of your dashboards).<br><br>
-        
-        Please carefully review the API response (currently in plain text) as it may provide possible error messages - see all examples listed to the right panel<br>
+        This triggers a fetch for a single service. It has been made available to solve specific use cases, so a reasonable use is advised (an excessive use of this endpoint may impact performance of your dashboards).<br>
+        Please carefully review the API response (currently in plain text) as it may also provide possible error messages - all examples to the right panel<br><br>
  
         **Note&#58;** Beta endpoints are subject to change.<br>
         The response for this endpoint will change in the future, so we may be able to provide debug information in JSON.
