@@ -2536,6 +2536,63 @@ paths:
             curl -X GET \
             https://api.tapclicks.com/v2/services/44/data/cgn \
             -H 'Authorization: Bearer YOUR_ACCESS_TOKEN_HERE'
+            
+  /services/manage/fetch_service{/id}:
+    get:
+      tags:
+        - SERVICES (DATA SOURCES)
+      summary: Start fetch for a service - **Beta
+      description: |
+        This endpoint triggers a fetch for a single service.
+
+
+        **Note&#58;** Beta endpoints are subject to change.<br>
+        Please carefully review the response (currently a Text value) as it will provide you with possible error messages - For example, if you've selected an incorrect service_id.
+        
+        
+        
+        The response will change in the future so we may be able to provide debug information in JSON.
+      parameters:
+        - in: path
+          name: /id
+          schema:
+            type: integer
+          required: true
+          description: Id of the service
+      responses: 
+        '200':
+          description: Ok - Successful Operation      
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/response_200_servicesdataview'
+              example: |-
+                Dashboard update 2269
+                  
+                Created batch #121746 for service #44
+                
+                Launching batch #121746
+                
+                All done.
+            
+        '400':
+          description: Error on client's side
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_400'              
+        '401':
+          description: Invalid access token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_401' 
+      x-code-samples:
+        - lang: 'Curl'
+          source: |
+            curl -X GET \
+            https://api.tapclicks.com/v2//services/manage/fetch_service/39 \
+            -H 'Authorization: Bearer YOUR_ACCESS_TOKEN_HERE'
      
 # --------------------- Users --------------------------  
   /users{/user_id}:
