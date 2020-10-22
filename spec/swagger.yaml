@@ -2566,7 +2566,7 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/response_200_servicesdataview'
+                $ref: '#/components/schemas/response_200_fetcheservice'
               example: |-
                 Dashboard update 2269<br>
                 Created batch #121746 for service #44<br>
@@ -5880,6 +5880,9 @@ components:
           type: integer
           description: Status
         
+    response_200_fetcheservice:
+      type: string
+    
         
 
   securitySchemes:
