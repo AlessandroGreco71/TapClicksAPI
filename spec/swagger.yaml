@@ -2542,13 +2542,13 @@ paths:
       tags:
         - SERVICES (DATA SOURCES)
       summary: |-
-        Start fetch for a service - **Beta**
+        Start fetch for a service **Beta**
       description: |
         This endpoint triggers a fetch for a single service.
 
 
         **Note&#58;** Beta endpoints are subject to change.<br>
-        Please carefully review the response (currently a Text value) as it will provide you with possible error messages - For example, if you've selected an incorrect service_id.
+        Please carefully review the response (currently a Text value) as it will provide you with possible error messages - For example, if you've selected an incorrect *service_id*.
         
         
         
@@ -2568,9 +2568,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/response_200_fetcheservice'
               example: |-
-                Dashboard update 2269<br>
-                Created batch #121746 for service #44<br>
-                Launching batch #121746<br>
+                Dashboard update 2269
+                Created batch #121746 for service #44
+                Launching batch #121746
                 All done.
             
         '400':
