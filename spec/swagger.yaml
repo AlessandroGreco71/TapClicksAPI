@@ -2572,7 +2572,6 @@ paths:
                 Created batch #121746 for service #39
                 Launching batch #121746
                 All done.
-                
             
         '400':
           description: Error on client's side
