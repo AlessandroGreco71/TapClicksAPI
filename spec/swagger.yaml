@@ -2567,12 +2567,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/response_200_servicesdataview'
               example: |-
-                Dashboard update 2269
-                  
-                Created batch #121746 for service #44
-                
-                Launching batch #121746
-                
+                Dashboard update 2269<br>
+                Created batch #121746 for service #44<br>
+                Launching batch #121746<br>
                 All done.
             
         '400':
