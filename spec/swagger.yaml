@@ -2568,8 +2568,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/response_200_fetcheservice'
               example: |
-                test <br>
-                hola
+                Dashboard update 2269
+                Created batch #121746 for service #39
+                Launching batch #121746
+                All done.
                 
             
         '400':
