@@ -2545,12 +2545,8 @@ paths:
         Start fetch for a service **Beta**
       description: |
         This endpoint triggers a fetch for a single service. It has been made available to solve specific use cases, so a reasonable use is advised (an excessive use of this endpoint may impact performance of your dashboards).<br><br>
-
-
         **Note&#58;** Beta endpoints are subject to change.<br>
-        Please carefully review the response (currently a Text value) as it may provide possible error messages - for example, if you've selected an incorrect *service_id*
-        
-        
+        Please carefully review the response (currently a Text value) as it may provide possible error messages - for example, if you've selected an incorrect *service_id*<br>
         The response will change in the future so we may be able to provide debug information in JSON.
       parameters:
         - in: path
