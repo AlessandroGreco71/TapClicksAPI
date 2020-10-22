@@ -2568,10 +2568,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/response_200_fetcheservice'
               example: |
-                Dashboard update 2269<br>
-                Created batch #121746 for service #44
-                Launching batch #121746
-                All done.
+                Dashboard update 2269<br> /// <br /> 
+                Created batch #121746 for service #44 &<br>
+                Launching batch #121746 \n
+                All done.<br />
+                Alessandro &#13;
+                about hear it 
             
         '400':
           description: Error on client's side
