@@ -2564,12 +2564,13 @@ paths:
         '200':
           description: Ok - Successful Operation      
           content:
-            application/json;charset=utf-8:
+            text/plain:
               schema:
                 $ref: '#/components/schemas/response_200_fetcheservice'
-              example:
-                "Dashboard oh oh update 2269<br> /// <br /> 
-                testing "
+              example: |
+                test <br>
+                hola
+                
             
         '400':
           description: Error on client's side
