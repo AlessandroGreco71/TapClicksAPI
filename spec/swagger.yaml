@@ -5893,7 +5893,6 @@ components:
       type: oauth2
       description: |
         
-        Test (<a href="https://docs.google.com/forms/d/e/1FAIpQLSf7vy0PInJhU3CYPCQW6YFGCc8HgSfuOywLcih05zyfPVIFLg/viewform?vc=0&c=0&w=1&flr=0&gxids=7628">Get Credentials here</a>)
         As a first step, you can request your OAuth client credentials by sending an email to api-developer@tapclicks.com.<br>
         You will need to provide a valid and active TapClicks account *email address* and the complete domain name that you have access to (*https://<span></span>your_instance.tapclicks.com*).<br>
         This request will be answered by assigning to you a unique Client Id (`CLIENT_ID`) and a unique Client Secret (`CLIENT_SECRET`). Make sure to store your Client Secret securely.
