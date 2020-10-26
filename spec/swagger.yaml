@@ -5895,7 +5895,7 @@ components:
         
         To get started, request your API credentials by completing <a href="https://docs.google.com/forms/d/e/1FAIpQLSf7vy0PInJhU3CYPCQW6YFGCc8HgSfuOywLcih05zyfPVIFLg/viewform?vc=0&c=0&w=1&flr=0&gxids=7628">THIS FORM</a>.<br>
         Within 24-48hrs, an email will be sent directly to the TapClicks SuperAdmin user that requested access.<br>
-        You will receive a unique Client Id (`CLIENT_ID`) and Client Secret (`CLIENT_SECRET`). Make sure to store your Client Secret securely.<br>
+        The email will include a unique Client Id (`CLIENT_ID`) and Client Secret (`CLIENT_SECRET`). Make sure to store your Client Secret securely.<br>
         This set of values will allow you to obtain an Access Token (`ACCESS_TOKEN`) that will grant you access to the API.
         
         For any questions, please reach out to: api-developer@tapclicks.com.
